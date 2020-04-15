@@ -1,0 +1,5 @@
+include LICENSE
+include README.rst
+recursive-include tax/static *
+recursive-include tax/templates *
+recursive-include docs *
