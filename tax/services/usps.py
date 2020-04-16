@@ -9,10 +9,10 @@ class USPSService:
     Base service for interacting with the USPS API.
     """
 
-    _BASE_URL = "https://secure.shippingapis.com/ShippingAPI.dll?"
+    BASE_URL = "https://secure.shippingapis.com/ShippingAPI.dll?"
     # _USER = settings.USPS_USER
     # _PASSWORD = settings.USPS_PASSWORD
-    _USER = "***REMOVED***"
+    USER = "***REMOVED***"
     # _PASSWORD = settings.USPS_PASSWORD
 
 
@@ -21,13 +21,13 @@ class ZipService(USPSService):
     Service to find the cities and states for a given zipcode(s).
     """
 
-    _BASE_URL = f"{USPSService._BASE_URL}API=CityStateLookup"
+    BASE_URL = f"{USPSService.BASE_URL}API=CityStateLookup"
 
     @classmethod
     def _generate_xml_payload(cls, zipcodes: list):
         payload = {
             "CityStateLookupRequest": {
-                "@USERID": USPSService._USER,
+                "@USERID": USPSService.USER,
                 "ZipCode": [{"Zip5": zip} for zip in zipcodes],
             }
         }
