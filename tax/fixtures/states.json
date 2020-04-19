@@ -1,0 +1,370 @@
+[
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "AL",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "AK" }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "AS" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "AZ",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "AR",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "CA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "CO",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "CT",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "DE" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "DC",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "FM" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "FL",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "GA",
+      "collects_saas_tax": true
+    }
+  },
+  { "model": "tax.state", "fields": { "abbreviation": "GU" } },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "HI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "ID",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "IL",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "IN",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "IA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "KS",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "KY",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "LA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "ME",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "MH" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MD",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MN",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MS",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "MO",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "MT" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NE",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NV",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "NH" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NJ",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NM",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NY",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "NC",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "ND",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "MP" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "OH",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "OK",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "OR" }
+  },
+  { "model": "tax.state", "fields": { "abbreviation": "PW" } },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "PA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "PR" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "RI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "SC",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "SD",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "TN",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "TX",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "UT",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "VT",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": { "abbreviation": "VI" }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "VA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "WA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "WV",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "WI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "tax.state",
+    "fields": {
+      "abbreviation": "WY",
+      "collects_saas_tax": true
+    }
+  }
+]
