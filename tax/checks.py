@@ -1,7 +1,7 @@
 from django.core import checks
 
 
-@checks.register("tax")
+@checks.register("Tax")
 def check_USPS_api_auth(appconfig=None, **kwargs):
     """Checks if the user has supplied a USPS username/password."""
     from . import settings as tax_settings
@@ -16,7 +16,7 @@ def check_USPS_api_auth(appconfig=None, **kwargs):
     return messages
 
 
-@checks.register("tax")
+@checks.register("Tax")
 def check_Avalara_api_auth(appconfig=None, **kwargs):
     """Checks if the user has supplied a Avalara username/password."""
     from . import settings as tax_settings

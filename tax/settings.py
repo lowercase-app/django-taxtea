@@ -10,3 +10,12 @@ USPS_USER = getattr(settings, "TAX_USPS_USER", None)
 ###############
 # Avalara Api #
 ###############
+AVALARA_USER = getattr(settings, "TAX_AVALARA_USER", None)
+AVALARA_PASSWORD = getattr(settings, "TAX_AVALARA_PASSWORD", None)
+
+#######
+# TAX #
+#######
+
+# Interval to wait before pulling a new tax rate from Avalara (in Days)
+TAX_RATE_INVALIDATE_INTERVAL = getattr(settings, "TAX_INVALIDATE_INTERVAL", 7)
