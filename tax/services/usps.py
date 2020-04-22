@@ -32,8 +32,8 @@ class ZipService(USPSService):
         return xmltodict.unparse(payload)
 
     @classmethod
-    def lookup_zips(cls, zipcodes: list):
-        url = f"{ZipService._BASE_URL}&XML={cls._generate_xml_payload(zipcodes)}"
+    def lookup_zips(cls, zipcodes: list[str]):
+        url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload(zipcodes)}"
         response = httpx.get(url)
         return xmltodict.parse(response.text)
 
