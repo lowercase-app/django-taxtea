@@ -3,7 +3,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver, Signal
 from localflavor.us.models import USStateField
 from tax.signals import tax_rate_changed
-from tax import core
 
 
 class State(models.Model):
@@ -30,5 +29,5 @@ class ZipCode(models.Model):
 def broadcast_tax_rate_change(sender, instance, update_fields, **kwargs):
     if "tax_rate" in update_fields:
         tax_rate_changed.send(
-            sender=core, zipcode=instance.code, tax_rate=instance.tax_rate
+            sender=tax_rate_changed, zipcode=instance.code, tax_rate=instance.tax_rate
         )
