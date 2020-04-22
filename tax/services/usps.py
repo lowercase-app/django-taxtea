@@ -10,6 +10,7 @@ class USPSService:
     """
 
     BASE_URL = "https://secure.shippingapis.com/ShippingAPI.dll?"
+
     USER = "***REMOVED***"
 
 
@@ -21,7 +22,7 @@ class ZipService(USPSService):
     BASE_URL = f"{USPSService.BASE_URL}API=CityStateLookup"
 
     @classmethod
-    def _generate_xml_payload(cls, zipcodes: list):
+    def _generate_xml_payload(cls, zipcodes: list[str]):
         payload = {
             "CityStateLookupRequest": {
                 "@USERID": USPSService.USER,
