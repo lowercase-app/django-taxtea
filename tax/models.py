@@ -25,7 +25,7 @@ class ZipCode(models.Model):
         return f"ZipCode: {self.code}, {self.state}"
 
 
-@receiver(post_save, instance=ZipCode)
+@receiver(post_save, sender=ZipCode)
 def broadcast_tax_rate_change(sender, instance, update_fields, **kwargs):
     if "tax_rate" in update_fields:
         tax_rate_changed.send(
