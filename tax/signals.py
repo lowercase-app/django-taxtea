@@ -1,3 +1,3 @@
-import django.dispatch
+from django.dispatch import Signal
 
-tax_rate_changed = django.dispatch.Signal(provided_args=["zipcode", "tax_rate"])
+tax_rate_changed = Signal(provided_args=["zipcode", "tax_rate"])
