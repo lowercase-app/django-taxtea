@@ -10,8 +10,10 @@ class USPSService:
     """
 
     BASE_URL = "https://secure.shippingapis.com/ShippingAPI.dll?"
-
-    USER = "***REMOVED***"
+    # _USER = settings.USPS_USER
+    # _PASSWORD = settings.USPS_PASSWORD
+    USER = ""
+    # _PASSWORD = settings.USPS_PASSWORD
 
 
 class ZipService(USPSService):
