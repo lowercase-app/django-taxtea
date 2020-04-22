@@ -1,5 +1,5 @@
 import httpx
-from django.conf import settings
+from tax import settings
 
 
 class AvalaraService:
