@@ -17,4 +17,4 @@ class TaxRate(AvalaraService):
     def by_postal_code(postalCode: str, country="US"):
         url = f"{AvalaraService.BASE_URL}/bypostalcode?country={country}&postalCode={postalCode}"
         response = httpx.get(url, auth=(AvalaraService.USER, AvalaraService.PASSWORD))
-        return getattr(response.json(), "totalRate")
+        return response.json().get("totalRate")

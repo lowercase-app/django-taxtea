@@ -1,6 +1,7 @@
 import xmltodict
 from typing import List
 from tax import settings
+from tax.exceptions import USPSError
 
 # from django.conf import settings
 import httpx
@@ -37,10 +38,9 @@ class ZipService(USPSService):
     def lookup_zips(cls, zipcodes: List[str]):
         url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload(zipcodes)}"
         response = httpx.get(url)
-        return (
+        if "Error" in response.text:
+            raise USPSError(response.text)
+        parsed = (
             xmltodict.parse(response.text).get("CityStateLookupResponse").get("ZipCode")
         )
-
-
-if __name__ == "__main__":
-    print(ZipService.lookup_zips(["12345", "27587", "44136", "44149", "44120"]))
+        return parsed
