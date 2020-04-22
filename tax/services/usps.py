@@ -35,7 +35,9 @@ class ZipService(USPSService):
     def lookup_zips(cls, zipcodes: list[str]):
         url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload(zipcodes)}"
         response = httpx.get(url)
-        return xmltodict.parse(response.text)
+        return (
+            xmltodict.parse(response.text).get("CityStateLookupResponse").get("ZipCode")
+        )
 
 
 if __name__ == "__main__":
