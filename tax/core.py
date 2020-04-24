@@ -21,13 +21,12 @@ def __stateForZip(zipCode: str) -> str:
     return res.get("State")
 
 
-def getTaxRateFor(zipCode: str) -> float:
+def getTaxRateForZipCode(zipCode: str) -> float:
     # First try a DB lookup to see if we already have a recent version of the tax rate
     try:
         zc = ZipCode.objects.select_related("state").get(code=zipCode)
     except ObjectDoesNotExist:
         s = __stateForZip(zipCode)
-        print(s)
         state = State.objects.get(abbreviation=s)
         zc = ZipCode.objects.create(code=zipCode, state=state)
 
