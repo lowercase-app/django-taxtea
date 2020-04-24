@@ -7,9 +7,9 @@ class USPSError(Exception):
     pass
 
 
-class AlavaraError(Exception):
+class AvalaraError(Exception):
     pass
 
 
-class AvalaraRateLimit(AlavaraError):
+class AvalaraRateLimit(AvalaraError):
     pass

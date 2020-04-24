@@ -17,7 +17,7 @@ class ZipCode(models.Model):
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="zipcodes")
     code = models.CharField(max_length=9, primary_key=True)
     tax_rate = models.DecimalField(
-        blank=True, max_digits=3, decimal_places=2, null=True
+        blank=True, max_digits=5, decimal_places=4, null=True
     )
     last_checked = models.DateTimeField(blank=True, null=True)
 
