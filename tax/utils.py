@@ -7,7 +7,9 @@ from tax.core import stateForZip
 from tax import settings
 
 
-def getTaxRateForZipCode(zipCode: str) -> float:
+def getTaxRateForZipCode(
+    zipCode: str, return_always: bool = False, force: bool = False
+) -> float:
     # First try a DB lookup to see if we already have a recent version of the tax rate
     try:
         zc = ZipCode.objects.select_related("state").get(code=zipCode)
@@ -17,7 +19,8 @@ def getTaxRateForZipCode(zipCode: str) -> float:
 
     now = timezone.now()
     if (
-        not zc.last_checked
+        force
+        or not zc.last_checked
         or not zc.tax_rate
         or zc.last_checked + timedelta(days=settings.TAX_RATE_INVALIDATE_INTERVAL) < now
     ):
@@ -28,4 +31,4 @@ def getTaxRateForZipCode(zipCode: str) -> float:
         # update_fields needed to send signal
         zc.save(update_fields=["tax_rate", "last_checked"])
 
-    return zc.tax_rate
+    return zc.tax_rate if zc.state.collects_saas_tax or return_always else 0.00
