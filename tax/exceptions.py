@@ -9,3 +9,7 @@ class USPSError(Exception):
 
 class AlavaraError(Exception):
     pass
+
+
+class AvalaraRateLimit(AlavaraError):
+    pass
