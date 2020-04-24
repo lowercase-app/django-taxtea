@@ -18,7 +18,8 @@
     "model": "tax.state",
     "fields": {
       "abbreviation": "AZ",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -31,7 +32,8 @@
   {
     "model": "tax.state",
     "fields": {
-      "abbreviation": "CA"
+      "abbreviation": "CA",
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -92,7 +94,8 @@
   {
     "model": "tax.state",
     "fields": {
-      "abbreviation": "IL"
+      "abbreviation": "IL",
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -168,13 +171,15 @@
     "model": "tax.state",
     "fields": {
       "abbreviation": "MS",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
     "model": "tax.state",
     "fields": {
-      "abbreviation": "MO"
+      "abbreviation": "MO",
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -236,7 +241,8 @@
   {
     "model": "tax.state",
     "fields": {
-      "abbreviation": "OH"
+      "abbreviation": "OH",
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -254,7 +260,8 @@
     "model": "tax.state",
     "fields": {
       "abbreviation": "PA",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -286,21 +293,24 @@
     "model": "tax.state",
     "fields": {
       "abbreviation": "TN",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
     "model": "tax.state",
     "fields": {
       "abbreviation": "TX",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
     "model": "tax.state",
     "fields": {
       "abbreviation": "UT",
-      "collects_saas_tax": true
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
     }
   },
   {
@@ -316,7 +326,8 @@
   {
     "model": "tax.state",
     "fields": {
-      "abbreviation": "VA"
+      "abbreviation": "VA",
+      "tax_base": "ORIGIN"
     }
   },
   {

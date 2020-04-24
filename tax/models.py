@@ -6,8 +6,12 @@ from tax.signals import tax_rate_changed
 
 
 class State(models.Model):
+
+    TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
+
     abbreviation = USStateField(blank=False, null=False)
     collects_saas_tax = models.BooleanField(default=False)
+    tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
 
     def __str__(self):
         return f"State: {self.abbreviation}"
