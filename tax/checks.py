@@ -42,7 +42,7 @@ def check_origin_zips(appconfig=None, **kwargs):
 
     messages = []
 
-    if not tax_settings.TAX_ORIGIN_ZIPCODES:
+    if not tax_settings.ORIGIN_ZIPCODES:
         msg = "Could not find a Origin Zipcode."
         hint = "Add at least one TAX_ORIGIN_ZIPCODES to your settings."
         messages.append(checks.Critical(msg, hint=hint, id="tax.C004"))
