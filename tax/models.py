@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from localflavor.us.models import USStateField
 from tax.signals import tax_rate_changed
+from tax import settings
 
 
 class State(models.Model):
@@ -12,6 +13,10 @@ class State(models.Model):
     abbreviation = USStateField(blank=False, null=False)
     collects_saas_tax = models.BooleanField(default=False)
     tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
+
+    @classmethod
+    def origin_states(cls):
+        return cls.objects.filter(zipcodes__in=settings.ORIGIN_ZIPCODES)
 
     def __str__(self):
         return f"State: {self.abbreviation}"
