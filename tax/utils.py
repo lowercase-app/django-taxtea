@@ -7,7 +7,7 @@ from tax.core import stateForZip
 from tax import settings
 
 
-def getTaxRateForZipCode(
+def get_tax_rate_for_zipcode(
     zipCode: str, return_always: bool = False, force: bool = False
 ) -> float:
     # First try a DB lookup to see if we already have a recent version of the tax rate
