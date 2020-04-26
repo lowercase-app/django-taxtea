@@ -35,8 +35,8 @@ class ZipService(USPSService):
         return xmltodict.unparse(payload)
 
     @classmethod
-    def lookup_zips(cls, zipcodes: List[str]):
-        url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload(zipcodes)}"
+    def lookup_zip(cls, zipcode: str):
+        url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload([zipcode])}"
         response = httpx.get(url)
         if "Error" in response.text:
             raise USPSError(response.text)

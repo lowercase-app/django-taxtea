@@ -1,10 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils import timezone
-from datetime import timedelta
-from tax.services.avalara import TaxRate
 from tax.models import ZipCode
-from tax.core import stateForZip
-from tax import settings
+from tax.core import state_for_zip, determine_tax_method_and_rate, refresh_tax_rates
 
 
 def get_tax_rate_for_zipcode(
@@ -14,21 +10,16 @@ def get_tax_rate_for_zipcode(
     try:
         zc = ZipCode.objects.select_related("state").get(code=zipCode)
     except ObjectDoesNotExist:
-        state = stateForZip(zipCode)
+        state = state_for_zip(zipCode)
         zc = ZipCode.objects.create(code=zipCode, state=state)
 
-    now = timezone.now()
-    if (
-        force
-        or not zc.last_checked
-        or not zc.tax_rate
-        or zc.last_checked + timedelta(days=settings.TAX_RATE_INVALIDATE_INTERVAL) < now
-    ):
-        # Request updated rate from Avalara API
-        tax_rate = TaxRate.by_postal_code(zipCode)
-        zc.tax_rate = tax_rate
-        zc.last_checked = now
-        # update_fields needed to send signal
-        zc.save(update_fields=["tax_rate", "last_checked"])
+    # refresh relevant zipcode tax rates
+    refresh_tax_rates(ZipCode.origins() + [zc])
+    tax_method, tax_rate = determine_tax_method_and_rate(zc)
 
-    return zc.tax_rate if zc.state.collects_saas_tax or return_always else 0.00
+    if tax_method == "ORIGIN":
+        print("Using Origin tax method")
+        return tax_rate
+    if tax_method == "DESTINATION":
+        print("Using Destination tax method")
+        return tax_rate if zc.state.collects_saas_tax or return_always else 0.00
