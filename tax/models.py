@@ -5,6 +5,8 @@ from localflavor.us.models import USStateField
 from tax.signals import tax_rate_changed
 from tax import settings
 
+# from tax.core import stateForZip
+
 
 class State(models.Model):
 
@@ -13,10 +15,6 @@ class State(models.Model):
     abbreviation = USStateField(blank=False, null=False, primary_key=True)
     collects_saas_tax = models.BooleanField(default=False)
     tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
-
-    @classmethod
-    def origin_states(cls):
-        return cls.objects.filter(zipcodes__in=settings.ORIGIN_ZIPCODES)
 
     def __str__(self):
         return f"State: {self.abbreviation}"
@@ -29,6 +27,13 @@ class ZipCode(models.Model):
         blank=True, max_digits=5, decimal_places=4, null=True
     )
     last_checked = models.DateTimeField(blank=True, null=True)
+
+    @classmethod
+    def origins(cls):
+        return [
+            z
+            for z in cls.objects.filter(code__in=[zc for state, zc in settings.ORIGINS])
+        ]
 
     def __str__(self):
         return f"ZipCode: {self.code}, {self.state}"
