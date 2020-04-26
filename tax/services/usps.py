@@ -26,6 +26,10 @@ class ZipService(USPSService):
 
     @classmethod
     def _generate_xml_payload(cls, zipcodes: List[str]):
+        for z in zipcodes:
+            if len(z) != 5:
+                raise TypeError("Invalid zipcode")
+
         payload = {
             "CityStateLookupRequest": {
                 "@USERID": USPSService.USER,
