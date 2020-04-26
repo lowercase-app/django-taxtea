@@ -1,7 +1,9 @@
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 from django.test import TestCase
+from model_bakery import baker
 from tax.models import State, ZipCode
 from tax.services.usps import ZipService
+from tax import settings
 
 # Create your tests here.
 
@@ -49,5 +51,26 @@ class TestZipCodeModel(TestCase):
 
 
 class TestZipService(TestCase):
-    def test_return(self):
-        ZipService.lookup_zips = MagicMock(return_value=)
+    def test_generate_xml_payload_single_zip(self):
+        self.assertEqual(
+            ZipService._generate_xml_payload(["44136"]),
+            f'<?xml version="1.0" encoding="utf-8"?>\n<CityStateLookupRequest USERID="{settings.USPS_USER}"><ZipCode><Zip5>44136</Zip5></ZipCode></CityStateLookupRequest>',
+        )
+
+    def test_generate_xml_payload_invalid_params(self):
+        with self.assertRaises(TypeError):
+            ZipService._generate_xml_payload("44136")
+
+    def test_generate_xml_payload_multiple_zips(self):
+        self.assertEqual(
+            ZipService._generate_xml_payload(["44136", "44149"]),
+            f'<?xml version="1.0" encoding="utf-8"?>\n<CityStateLookupRequest USERID="{settings.USPS_USER}"><ZipCode><Zip5>44136</Zip5></ZipCode><ZipCode><Zip5>44149</Zip5></ZipCode></CityStateLookupRequest>',
+        )
+
+
+# class TestCore(TestCase):
+#     def setUp(self):
+#         self.zipcode = baker.make("tax.ZipCode",)
+
+#     def test_return(self):
+#         ZipService.lookup_zip = MagicMock(return_value=null)
