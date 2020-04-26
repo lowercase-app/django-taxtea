@@ -10,7 +10,7 @@ class State(models.Model):
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
 
-    abbreviation = USStateField(blank=False, null=False)
+    abbreviation = USStateField(blank=False, null=False, primary_key=True)
     collects_saas_tax = models.BooleanField(default=False)
     tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
 
