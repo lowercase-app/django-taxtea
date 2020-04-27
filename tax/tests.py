@@ -14,12 +14,6 @@ class TestStateModel(TestCase):
     Test State Django Model
     """
 
-    # @classmethod
-    # def setUpTestData(cls):
-    #     State.objects.create(abbreviation="OH", collects_saas_tax=True)
-    #     State.objects.create(abbreviation="AS", collects_saas_tax=False)
-    #     pass
-
     def setUp(self):
         pass
 
