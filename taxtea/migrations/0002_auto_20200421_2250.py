@@ -13,7 +13,7 @@ def import_states(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("tax", "0001_initial"),
+        ("taxtea", "0001_initial"),
     ]
 
     operations = [migrations.RunPython(import_states, None)]

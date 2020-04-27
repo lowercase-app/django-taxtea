@@ -5,4 +5,4 @@ Tax Tea
 
 # __version__ = pkg_resources.require("tax")[0].version
 
-default_app_config = "tax.apps.TaxTeaConfig"
+default_app_config = "taxtea.apps.TaxTeaConfig"

@@ -40,6 +40,4 @@ class ZipCode(models.Model):
 @receiver(post_save, sender=ZipCode)
 def broadcast_tax_rate_change(sender, instance, update_fields, **kwargs):
     if update_fields and "tax_rate" in update_fields:
-        tax_rate_changed.send(
-            sender=tax_rate_changed, zipcode=instance.code, tax_rate=instance.tax_rate
-        )
+        tax_rate_changed.send(sender=sender, instance=instance)

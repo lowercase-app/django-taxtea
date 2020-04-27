@@ -65,21 +65,23 @@ class TestZipService(TestCase):
 
 class TestCore(TestCase):
     def setUp(self):
-        self.zipcode = baker.make("tax.ZipCode", code="27587", state__abbreviation="NC")
+        self.zipcode = baker.make(
+            "taxtea.ZipCode", code="27587", state__abbreviation="NC"
+        )
         self.zipcode_pa = baker.make(
-            "tax.ZipCode",
+            "taxtea.ZipCode",
             code="19012",
             state__abbreviation="PA",
             state__tax_base="ORIGIN",
         )
         self.zipcode_nexus = baker.make(
-            "tax.ZipCode",
+            "taxtea.ZipCode",
             code="15216",
             state__abbreviation="PA",
             state__tax_base="ORIGIN",
         )
 
-    @patch("tax.core.ZipService")
+    @patch("taxtea.core.ZipService")
     def test_state_for_zip(self, mock_zip_service):
         mock_zip_service.lookup_zip = self.zipcode
         self.assertEqual(state_for_zip("27587"), State.objects.get(abbreviation="NC"))
@@ -89,10 +91,10 @@ class TestCore(TestCase):
         self.assertEqual(method, "DESTINATION")
         self.assertEqual(rate, self.zipcode.tax_rate)
 
-    @patch("tax.models.ZipCode")
+    @patch("taxtea.models.ZipCode")
     def test_determine_tax_method_and_rate_origin(self, mock_ZipCode):
         mock_ZipCode.nexus = [self.zipcode_nexus]
         method, rate = determine_tax_method_and_rate(self.zipcode_pa)
 
         self.assertEqual(method, "ORIGIN")
-        self.assertEqual(rate, self.zipcode_origin.tax_rate)
+        self.assertEqual(rate, self.zipcode_nexus.tax_rate)
