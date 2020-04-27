@@ -1,9 +1,10 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 from django.test import TestCase
 from model_bakery import baker
 from tax.models import State, ZipCode
 from tax.services.usps import ZipService
 from tax import settings
+from tax.core import state_for_zip, determine_tax_method_and_rate
 
 # Create your tests here.
 
@@ -68,9 +69,36 @@ class TestZipService(TestCase):
         )
 
 
-# class TestCore(TestCase):
-#     def setUp(self):
-#         self.zipcode = baker.make("tax.ZipCode",)
+class TestCore(TestCase):
+    def setUp(self):
+        self.zipcode = baker.make("tax.ZipCode", code="27587", state__abbreviation="NC")
+        self.zipcode_pa = baker.make(
+            "tax.ZipCode",
+            code="19012",
+            state__abbreviation="PA",
+            state__tax_base="ORIGIN",
+        )
+        self.zipcode_origin = baker.make(
+            "tax.ZipCode",
+            code="15216",
+            state__abbreviation="PA",
+            state__tax_base="ORIGIN",
+        )
 
-#     def test_return(self):
-#         ZipService.lookup_zip = MagicMock(return_value=null)
+    @patch("tax.core.ZipService")
+    def test_state_for_zip(self, mock_zip_service):
+        mock_zip_service.lookup_zip = self.zipcode
+        self.assertEqual(state_for_zip("27587"), State.objects.get(abbreviation="NC"))
+
+    def test_determine_tax_method_and_rate_destination(self):
+        method, rate = determine_tax_method_and_rate(self.zipcode)
+        self.assertEqual(method, "DESTINATION")
+        self.assertEqual(rate, self.zipcode.tax_rate)
+
+    @patch("tax.models.ZipCode")
+    def test_determine_tax_method_and_rate_origin(self, mock_ZipCode):
+        mock_ZipCode.origins = [self.zipcode_origin]
+        method, rate = determine_tax_method_and_rate(self.zipcode_pa)
+
+        self.assertEqual(method, "ORIGIN")
+        self.assertEqual(rate, self.zipcode_origin.tax_rate)
