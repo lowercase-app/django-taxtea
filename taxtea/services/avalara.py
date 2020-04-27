@@ -15,8 +15,8 @@ class TaxRate(AvalaraService):
     Interface for the fetching Tax Rates from Avalara
     """
 
-    def by_postal_code(postalCode: str, country="US"):
-        url = f"{AvalaraService.BASE_URL}/bypostalcode?country={country}&postalCode={postalCode}"
+    def by_zip_code(zipcode: str, country="US"):
+        url = f"{AvalaraService.BASE_URL}/bypostalcode?country={country}&postalCode={zipcode}"
         try:
             response = httpx.get(
                 url, auth=(AvalaraService.USER, AvalaraService.PASSWORD)

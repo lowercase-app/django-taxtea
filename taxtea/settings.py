@@ -18,7 +18,9 @@ AVALARA_PASSWORD = getattr(settings, "TAXTEA_AVALARA_PASSWORD", None)
 #######
 
 # Interval to wait before pulling a new tax rate from Avalara (in Days)
-TAX_RATE_INVALIDATE_INTERVAL = getattr(settings, "TAXTEA_INVALIDATE_INTERVAL", 7)
+TAX_RATE_INVALIDATE_INTERVAL = getattr(
+    settings, "TAXTEA_TAX_RATE_INVALIDATE_INTERVAL", 7
+)
 # A list of tuples where you have a physical prescense (origin)
 # format ("STATE_ABBR", "ZIPCODE") example: ("OH", "44136")
 ORIGINS = getattr(settings, "TAXTEA_ORIGINS", [])
