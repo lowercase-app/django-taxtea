@@ -2,10 +2,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from localflavor.us.models import USStateField
-from tax.signals import tax_rate_changed
-from tax import settings
-
-# from tax.core import stateForZip
+from taxtea.signals import tax_rate_changed
+from taxtea import settings
 
 
 class State(models.Model):

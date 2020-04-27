@@ -2,22 +2,22 @@ from django.apps import AppConfig
 import sys
 
 
-class TaxConfig(AppConfig):
+class TaxTeaConfig(AppConfig):
     """
-    An AppConfig for Tax which loads system checks
+    An AppConfig for TaxTea which loads system checks
     and event handlers once Django is ready.
     """
 
-    name = "tax"
-    verobose_name = "Tax"
+    name = "taxtea"
+    verobose_name = "Tax Tea"
 
     def ready(self):
         from . import checks  # noqa: Register the checks
 
         if "runserver" not in sys.argv:
             return True
-        from tax import settings
-        from tax.models import ZipCode, State
+        from taxtea import settings
+        from taxtea.models import ZipCode, State
 
         # Insure Origins are in the DB
         for state, zc in settings.ORIGINS:

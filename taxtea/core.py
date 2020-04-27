@@ -1,13 +1,13 @@
 # Core API of Tax Django App
 
-from tax.models import State, ZipCode
-from tax.services.usps import ZipService
-from tax import settings
+from taxtea.models import State, ZipCode
+from taxtea.services.usps import ZipService
+from taxtea import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from datetime import timedelta
 from typing import List, Tuple
-from tax.services.avalara import TaxRate
+from taxtea.services.avalara import TaxRate
 
 
 def state_for_zip(zipCode: str) -> State:

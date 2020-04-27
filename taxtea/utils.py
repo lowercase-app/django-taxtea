@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
-from tax.models import ZipCode
-from tax.core import state_for_zip, determine_tax_method_and_rate, refresh_tax_rates
+from taxtea.models import ZipCode
+from taxtea.core import state_for_zip, determine_tax_method_and_rate, refresh_tax_rates
 
 
 def get_tax_rate_for_zipcode(

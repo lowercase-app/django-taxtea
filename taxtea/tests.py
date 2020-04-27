@@ -1,10 +1,10 @@
 from unittest.mock import patch
 from django.test import TestCase
 from model_bakery import baker
-from tax.models import State, ZipCode
-from tax.services.usps import ZipService
-from tax import settings
-from tax.core import state_for_zip, determine_tax_method_and_rate
+from taxtea.models import State, ZipCode
+from taxtea.services.usps import ZipService
+from taxtea import settings
+from taxtea.core import state_for_zip, determine_tax_method_and_rate
 
 # Create your tests here.
 

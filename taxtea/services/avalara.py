@@ -1,6 +1,6 @@
 import httpx
-from tax import settings
-from tax.exceptions import AvalaraError, AvalaraRateLimit
+from taxtea import settings
+from taxtea.exceptions import AvalaraError, AvalaraRateLimit
 
 
 class AvalaraService:

@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "tax"
+name = "taxtea"
 version = "0.1.0"
-description = "Django Tax App for Saas"
+description = "TaxTea - A Django Tax App for Saas"
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 
 [tool.poetry.dependencies]

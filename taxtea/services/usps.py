@@ -1,7 +1,7 @@
 import xmltodict
 from typing import List
-from tax import settings
-from tax.exceptions import USPSError
+from taxtea import settings
+from taxtea.exceptions import USPSError
 
 # from django.conf import settings
 import httpx
