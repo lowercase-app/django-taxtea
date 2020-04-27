@@ -21,7 +21,7 @@ TAXTEA_USPS_USER = "XXXXXXXX" # required
 TAXTEA_AVALARA_USER = "XXXXXXXX" # required
 TAXTEA_AVALARA_PASSWORD = "XXXXXXXX" # required
 TAXTEA_NEXUSES = [("AZ", "12345"),] # required
-TAXTEA_TAX_RATE_INVALIDATE_INTERVAL= 7 # optional, default is 7 (days)
+TAXTEA_TAX_RATE_INVALIDATE_INTERVAL = 7 # optional, default is 7 (days)
 ```
 
 ### USPS
