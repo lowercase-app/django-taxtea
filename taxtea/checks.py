@@ -42,15 +42,15 @@ def check_origin_zips(appconfig=None, **kwargs):
 
     messages = []
 
-    if not tax_settings.ORIGINS:
-        msg = "Could not find a Origin Zipcode."
-        hint = "Add at least one TAXTEA_ORIGINS to your settings."
+    if not tax_settings.NEXUSES:
+        msg = "Could not find a Nexus."
+        hint = "Add at least one TAXTEA_NEXUSES to your settings."
         messages.append(checks.Critical(msg, hint=hint, id="tax.C004"))
 
-    state, zipcode = tax_settings.ORIGINS[0]
+    state, zipcode = tax_settings.NEXUSES[0]
     if not state and not zipcode:
-        msg = "Could not find a valid Origin tuple."
-        hint = "Add at least one Origin tuple ('STATE', 'ZIPCODE') to your settings."
+        msg = "Could not find a valid Nexus tuple."
+        hint = "Add at least one Nexus tuple ('STATE', 'ZIPCODE') to your settings."
         messages.append(checks.Critical(msg, hint=hint, id="tax.C005"))
 
     return messages

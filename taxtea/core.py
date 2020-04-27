@@ -23,11 +23,11 @@ def state_for_zip(zipcode: str) -> State:
 
 
 def determine_tax_method_and_rate(zipcode: ZipCode) -> Tuple[str, float]:
-    origins = ZipCode.origins()
+    nexuses = ZipCode.nexuses()
     # Origin Tax Rate takes precedence
-    for origin in origins:
-        if zipcode.state == origin.state and origin.state.tax_base == "ORIGIN":
-            return ("ORIGIN", origin.tax_rate)
+    for nexus in nexuses:
+        if zipcode.state == nexus.state and nexus.state.tax_base == "ORIGIN":
+            return ("ORIGIN", nexus.tax_rate)
     return ("DESTINATION", zipcode.tax_rate)
 
 

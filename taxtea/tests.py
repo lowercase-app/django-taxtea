@@ -72,7 +72,7 @@ class TestCore(TestCase):
             state__abbreviation="PA",
             state__tax_base="ORIGIN",
         )
-        self.zipcode_origin = baker.make(
+        self.zipcode_nexus = baker.make(
             "tax.ZipCode",
             code="15216",
             state__abbreviation="PA",
@@ -91,7 +91,7 @@ class TestCore(TestCase):
 
     @patch("tax.models.ZipCode")
     def test_determine_tax_method_and_rate_origin(self, mock_ZipCode):
-        mock_ZipCode.origins = [self.zipcode_origin]
+        mock_ZipCode.nexus = [self.zipcode_nexus]
         method, rate = determine_tax_method_and_rate(self.zipcode_pa)
 
         self.assertEqual(method, "ORIGIN")

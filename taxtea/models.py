@@ -27,10 +27,10 @@ class ZipCode(models.Model):
     last_checked = models.DateTimeField(blank=True, null=True)
 
     @classmethod
-    def origins(cls):
+    def nexuses(cls):
         return [
             z
-            for z in cls.objects.filter(code__in=[zc for state, zc in settings.ORIGINS])
+            for z in cls.objects.filter(code__in=[zc for state, zc in settings.NEXUSES])
         ]
 
     def __str__(self):

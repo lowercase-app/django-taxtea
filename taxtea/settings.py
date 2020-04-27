@@ -21,6 +21,6 @@ AVALARA_PASSWORD = getattr(settings, "TAXTEA_AVALARA_PASSWORD", None)
 TAX_RATE_INVALIDATE_INTERVAL = getattr(
     settings, "TAXTEA_TAX_RATE_INVALIDATE_INTERVAL", 7
 )
-# A list of tuples where you have a physical prescense (origin)
+# A list of tuples where you have a physical prescense (nexus)
 # format ("STATE_ABBR", "ZIPCODE") example: ("OH", "44136")
-ORIGINS = getattr(settings, "TAXTEA_ORIGINS", [])
+NEXUSES = getattr(settings, "TAXTEA_NEXUSES", [])

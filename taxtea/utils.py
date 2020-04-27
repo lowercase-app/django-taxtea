@@ -14,7 +14,7 @@ def get_tax_rate_for_zipcode(
         zc = ZipCode.objects.create(code=zipCode, state=state)
 
     # refresh relevant zipcode tax rates
-    refresh_tax_rates(ZipCode.origins() + [zc])
+    refresh_tax_rates(ZipCode.nexuses() + [zc])
     tax_method, tax_rate = determine_tax_method_and_rate(zc)
 
     if tax_method == "ORIGIN":
