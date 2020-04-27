@@ -72,7 +72,7 @@ from taxtea.utils import get_tax_rate_for_zipcode
 |---------------|------|----------|---------|-------------|
 | zipcode       | str  | yes      | n/a     | The zipcode you wish to look up                                                                                                        |
 | return_always | bool | no       | False   | Always return a tax rate, even when no tax needs to be collected                                                                       |
-| force         | bool | no       | False   | Force a check for a new tax rate. Tax rates are refreshed (upon request) according to the TAXTEA_TAX_RATE_INVALIDATE_INTERVAL setting. |
+| force         | bool | no       | False   | Force a check for a new tax rate. Tax rates are refreshed (upon request) according to the `TAXTEA_TAX_RATE_INVALIDATE_INTERVAL` setting. |
 
 **Return** `type: float`
 
