@@ -40,10 +40,11 @@ class ZipService(USPSService):
 
     @classmethod
     def lookup_zip(cls, zipcode: str):
-        url = f"{ZipService.BASE_URL}&XML={cls._generate_xml_payload([zipcode])}"
+        url = f"{cls.BASE_URL}&XML={cls._generate_xml_payload([zipcode])}"
         response = httpx.get(url)
         if "Error" in response.text:
             raise USPSError(response.text)
+        print(response.text)
         parsed = (
             xmltodict.parse(response.text).get("CityStateLookupResponse").get("ZipCode")
         )
