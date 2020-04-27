@@ -44,7 +44,6 @@ class ZipService(USPSService):
         response = httpx.get(url)
         if "Error" in response.text:
             raise USPSError(response.text)
-        print(response.text)
         parsed = (
             xmltodict.parse(response.text).get("CityStateLookupResponse").get("ZipCode")
         )
