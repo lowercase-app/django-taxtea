@@ -85,7 +85,7 @@ Tax Tea implements a single Signal to allow you to perform tasks when a Zip Code
 
 ```python
 from django.dispatch import receiver
-from tax.signals import tax_rate_changed
+from taxtea.signals import tax_rate_changed
 
 @receiver(tax_rate_changed)
 def my_callback(sender, instance, **kwargs):
