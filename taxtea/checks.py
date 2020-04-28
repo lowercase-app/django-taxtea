@@ -46,6 +46,8 @@ def check_origin_zips(appconfig=None, **kwargs):
         msg = "Could not find a Nexus."
         hint = "Add at least one TAXTEA_NEXUSES to your settings."
         messages.append(checks.Critical(msg, hint=hint, id="tax.C004"))
+        # If there is no TAX_NEXUS, then the next check will throw an IndexError
+        return messages
 
     state, zipcode = tax_settings.NEXUSES[0]
     if not state and not zipcode:
