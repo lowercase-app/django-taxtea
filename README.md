@@ -1,8 +1,8 @@
-# Tax Tea
+# TaxTea
 
 Django Tax App for SaaS.
 
-Taxes are hard. That shouldn't stop you from building your dreams. Tax Tea does the heavy lifting and tells you exactly what sales tax, if any, you need to be charging your customers.
+Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does the heavy lifting and tells you exactly what sales tax, if any, you need to be charging your customers.
 
 > Currently only supporting US 🇺🇸
 
@@ -37,7 +37,7 @@ TaxTea relies on Avalara for getting up-to-date tax rates for Zip Codes. The Ava
 
 Your `TAXTEA_NEXUSES` are any place where your company has a presence. For example, every company has a nexus where they incorporated. We require there to be at least one item in this list, which is your physical incorporation state/zip.
 
-Nexuses are part of the equation of how Tax Tea calculates sales tax. There are two types of sales tax -- Origin and Destination. Origin means that the sales tax will be collected from the state where you have a nexus. For example, if your incorporation state is an Origin-based state and a customer purchases your product who also lives in that state, it is the nexus' zip code that gets used to determine the tax rate, not the customer's.  Destination-based sales tax means that the sales tax will be charged at the rate of where the customer lives. This is applicable for out of state transactions and transactions within a state that is not an Origin-based. Want to learn more? Here's great article about [Origin vs. Destination-based Sales tax](https://blog.taxjar.com/charging-sales-tax-rates/) from Tax Jar.
+Nexuses are part of the equation of how TaxTea calculates sales tax. There are two types of sales tax -- Origin and Destination. Origin means that the sales tax will be collected from the state where you have a nexus. For example, if your incorporation state is an Origin-based state and a customer purchases your product who also lives in that state, it is the nexus' zip code that gets used to determine the tax rate, not the customer's.  Destination-based sales tax means that the sales tax will be charged at the rate of where the customer lives. This is applicable for out of state transactions and transactions within a state that is not an Origin-based. Want to learn more? Here's great article about [Origin vs. Destination-based Sales tax](https://blog.taxjar.com/charging-sales-tax-rates/) from Tax Jar.
 
 
 ## Usage
@@ -81,7 +81,7 @@ Function will return `0.00` if the state does not collect sales tax for SaaS.
 
 
 ### Signals
-Tax Tea implements a single Signal to allow you to perform tasks when a Zip Code's tax rate has changed.
+TaxTea implements a single Signal to allow you to perform tasks when a Zip Code's tax rate has changed.
 
 ```python
 from django.dispatch import receiver
