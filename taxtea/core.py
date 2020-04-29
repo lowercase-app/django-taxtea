@@ -8,6 +8,7 @@ from django.utils import timezone
 from datetime import timedelta
 from typing import List, Tuple
 from taxtea.services.avalara import TaxRate
+from decimal import Decimal
 
 
 def state_for_zip(zipcode: str) -> State:
@@ -22,7 +23,7 @@ def state_for_zip(zipcode: str) -> State:
         return state
 
 
-def determine_tax_method_and_rate(zipcode: ZipCode) -> Tuple[str, float]:
+def determine_tax_method_and_rate(zipcode: ZipCode) -> Tuple[str, Decimal]:
     nexuses = ZipCode.nexuses()
     # Origin Tax Rate takes precedence
     for nexus in nexuses:

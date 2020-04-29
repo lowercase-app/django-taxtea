@@ -5,7 +5,7 @@ description = "TaxTea - A Django Tax App for Saas"
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8.2"
+python = "^3.8.0"
 django = "^3.0.5"
 xmltodict = "^0.12.0"
 httpx = "^0.12.1"
