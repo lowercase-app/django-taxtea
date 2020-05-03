@@ -43,8 +43,7 @@ def refresh_tax_rates(zipcodes: List[ZipCode], force: bool = False) -> List[ZipC
             < now
         ):
             # Request updated rate from Avalara API
-            tax_rate = TaxRate.by_zip_code(zc.code)
-            zc.tax_rate = tax_rate
+            zc.tax_rate = TaxRate.by_zip_code(zc.code)
             zc.last_checked = now
             # update_fields needed to send signal
             zc.save(update_fields=["tax_rate", "last_checked"])

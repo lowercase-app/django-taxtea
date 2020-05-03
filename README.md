@@ -88,7 +88,7 @@ from taxtea.utils import get_tax_rate_for_zipcode
 | return_always | bool | no       | False   | Always return a tax rate, even when no tax needs to be collected                                                                         |
 | force         | bool | no       | False   | Force a check for a new tax rate. Tax rates are refreshed (upon request) according to the `TAXTEA_TAX_RATE_INVALIDATE_INTERVAL` setting. |
 
-**Return** `type: float`
+**Return** `type: Decimal`
 
 The function will return `0.00` if the state does not collect sales tax for SaaS.
 

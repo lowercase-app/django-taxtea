@@ -1,4 +1,6 @@
 import httpx
+from decimal import Decimal
+
 from taxtea import settings
 from taxtea.exceptions import AvalaraError, AvalaraRateLimit
 
@@ -15,15 +17,16 @@ class TaxRate(AvalaraService):
     Interface for the fetching Tax Rates from Avalara
     """
 
-    def by_zip_code(zipcode: str, country="US"):
+    def by_zip_code(zipcode: str, country="US")-> Decimal:
         url = f"{AvalaraService.BASE_URL}/bypostalcode?country={country}&postalCode={zipcode}"
         try:
             response = httpx.get(
                 url, auth=(AvalaraService.USER, AvalaraService.PASSWORD)
             )
-        except httpx.exceptions.httpError:
+        except httpx.exceptions.HttpError:
             if response.status_code == 429:
                 raise AvalaraRateLimit
             else:
                 raise AvalaraError
-        return response.json().get("totalRate")
+        tax_rate = Decimal(response.json().get("totalRate"))
+        return tax_rate.quantize(Decimal("0.0001"))
