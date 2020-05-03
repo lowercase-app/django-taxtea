@@ -4,17 +4,17 @@ from taxtea.core import state_for_zip, determine_tax_method_and_rate, refresh_ta
 from decimal import Decimal
 
 
-def get_tax_rate_for_zipcode(
-    zipCode: str, return_always: bool = False, force: bool = False
+def get_tax_rate_for_zip_code(
+    zip_code: str, return_always: bool = False, force: bool = False
 ) -> Decimal:
     # First try a DB lookup to see if we already have a recent version of the tax rate
     try:
-        zc = ZipCode.objects.select_related("state").get(code=zipCode)
+        zc = ZipCode.objects.select_related("state").get(code=zip_code)
     except ObjectDoesNotExist:
-        state = state_for_zip(zipCode)
-        zc = ZipCode.objects.create(code=zipCode, state=state)
+        state = state_for_zip(zip_code)
+        zc = ZipCode.objects.create(code=zip_code, state=state)
 
-    # refresh relevant zipcode tax rates
+    # refresh relevant Zip Code tax rates
     refresh_tax_rates(ZipCode.nexuses() + [zc])
     tax_method, tax_rate = determine_tax_method_and_rate(zc)
 
