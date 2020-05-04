@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from localflavor.us.models import USStateField
-from taxtea.signals import tax_rate_changed
 from taxtea import settings
 
 
@@ -25,6 +24,15 @@ class ZipCode(models.Model):
         blank=True, max_digits=5, decimal_places=4, null=True
     )
     last_checked = models.DateTimeField(blank=True, null=True)
+
+
+    @property
+    def applicable_tax_rate(self):
+        for nexus in ZipCode.nexuses():
+            if zipcode.state == nexus.state and nexus.state.tax_base == "ORIGIN":
+                return nexus.tax_rate
+        # Destination Based
+        return self.tax_rate if self.state.collects_saas_tax else Decimal("0.00")
 
     @classmethod
     def nexuses(cls):

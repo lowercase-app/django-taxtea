@@ -16,6 +16,10 @@ def get_tax_rate_for_zip_code(
 
     # refresh relevant Zip Code tax rates
     refresh_tax_rates(ZipCode.nexuses() + [zc])
+    
+    # ~Should~ just be able to as long as model instances follow db updates
+    # return zc.applicable_tax_rate
+
     tax_method, tax_rate = determine_tax_method_and_rate(zc)
 
     if tax_method == "ORIGIN":
