@@ -13,13 +13,3 @@ class TaxTeaConfig(AppConfig):
 
     def ready(self):
         from . import checks  # noqa: Register the checks
-
-        if "runserver" not in sys.argv:
-            return True
-        from taxtea import settings
-        from taxtea.models import ZipCode, State
-
-        # Insure Nexuses are in the DB
-        for state, zc in settings.NEXUSES:
-            s = State.objects.get(pk=state)
-            ZipCode.objects.get_or_create(code=zc, defaults={"code": zc, "state": s})

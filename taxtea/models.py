@@ -25,7 +25,6 @@ class ZipCode(models.Model):
     )
     last_checked = models.DateTimeField(blank=True, null=True)
 
-
     @property
     def applicable_tax_rate(self):
         for nexus in ZipCode.nexuses():
@@ -37,8 +36,10 @@ class ZipCode(models.Model):
     @classmethod
     def nexuses(cls):
         return [
-            z
-            for z in cls.objects.filter(code__in=[zc for state, zc in settings.NEXUSES])
+            cls.objects.get_or_create(
+                pk=zc, defaults={"code": zc, "state": State.objects.get(pk=state)}
+            )[0]
+            for state, zc in settings.NEXUSES
         ]
 
     def __str__(self):
