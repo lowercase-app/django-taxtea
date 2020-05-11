@@ -51,7 +51,7 @@ class ZipCode(models.Model):
     def applicable_tax_rate(self):
         nexuses = ZipCode.nexuses()
         zcs = nexuses + [self]
-        ZipCode.refresh_rates(zip_codes=zcs)
+        ZipCode.__refresh_rates(zip_codes=zcs)
         self.refresh_from_db()
 
         for nexus in ZipCode.nexuses():
@@ -79,7 +79,7 @@ class ZipCode(models.Model):
         ]
 
     @classmethod
-    def refresh_rates(cls, zip_codes: List[ZipCodeType], force=False):
+    def __refresh_rates(cls, zip_codes: List[ZipCodeType], force=False):
         now = timezone.now()
         for zc in zip_codes:
             if (

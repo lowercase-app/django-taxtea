@@ -9,7 +9,7 @@ Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does t
 ## Installation
 
 ```
-poetry add git+https://github.com/lowercase-app/taxtea.git#latest
+poetry add git+https://github.com/lowercase-app/taxtea.git#1.0.0
 ```
 
 ## Getting Started
@@ -70,23 +70,36 @@ python manage.py migrate
 
 ## Getting Tax Rates
 
-Import the core function:
+Import the ZipCode model:
 
 ```python
-from taxtea.utils import get_tax_rate_for_zipcode
+from taxtea.models import ZipCode
 ```
 
-### Function Spec
+# Model Spec
 
-**Name** `get_tax_rate_for_zipcode()`
+## ZipCode
+
+### Class Method `get()`
 
 **Parameters**
 
-| Name          | Type | Required | Default | Description                                                                                                                              |
-| ------------- | ---- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| zipcode       | str  | yes      | n/a     | The zipcode you wish to look up                                                                                                          |
-| return_always | bool | no       | False   | Always return a tax rate, even when no tax needs to be collected                                                                         |
-| force         | bool | no       | False   | Force a check for a new tax rate. Tax rates are refreshed (upon request) according to the `TAXTEA_TAX_RATE_INVALIDATE_INTERVAL` setting. |
+| Name    | Type | Required | Default | Description                     |
+| ------- | ---- | -------- | ------- | ------------------------------- |
+| zipcode | str  | yes      | n/a     | The zipcode you wish to look up |
+
+**Return** `type: ZipCode`
+
+### Class Method `nexuses()`
+
+**Parameters**
+
+>None 
+
+**Return** `type: [ZipCode]`
+
+
+### Property `applicable_tax_rate`
 
 **Return** `type: Decimal`
 
@@ -94,23 +107,15 @@ The function will return `0.00` if the state does not collect sales tax for SaaS
 
 > **NOTE**: If the given Zip Code is in a state where you hold a nexus and that state is an ORIGIN-based sales tax state, the returned tax rate will be for the Zip Code of the nexus.
 
-### Signals
 
-TaxTea implements a `tax_rate_changed` Signal to allow you to perform tasks when a Zip Code's tax rate has changed.
+## State
 
-```python
-from django.dispatch import receiver
-from taxtea.signals import tax_rate_changed
-
-@receiver(tax_rate_changed)
-def my_callback(sender, instance, **kwargs):
-    print(f"ZipCode {instance.code} new tax rate => {instance.tax_rate}")
-    print("Do some work...")
-```
+### Class Method `state_for_zip()`
 
 **Parameters**
 
-| Name     | Type    | Description                                  |
-| -------- | ------- | -------------------------------------------- |
-| sender   | ZipCode | The ZipCode class                            |
-| instance | ZipCode | The ZipCode instance that has a new tax rate |
+| Name    | Type | Required | Default | Description                     |
+| ------- | ---- | -------- | ------- | ------------------------------- |
+| zipcode | str  | yes      | n/a     | The zipcode you wish to look up |
+
+**Return** `type: State`
