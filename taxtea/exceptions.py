@@ -13,3 +13,7 @@ class AvalaraError(Exception):
 
 class AvalaraRateLimit(AvalaraError):
     pass
+
+
+class InvalidZipCode(Exception):
+    pass
