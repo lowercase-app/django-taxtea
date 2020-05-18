@@ -61,7 +61,7 @@ class ZipCode(models.Model):
         return self.tax_rate if self.state.collects_saas_tax else Decimal("0.00")
 
     @classmethod
-    def tax_rate_to_percentage(tax_rate: Decimal) -> Decimal:
+    def tax_rate_to_percentage(cls, tax_rate: Decimal) -> Decimal:
         percentage = tax_rate * Decimal("100.00")
         return percentage.quantize(Decimal("0.0001"))
 
