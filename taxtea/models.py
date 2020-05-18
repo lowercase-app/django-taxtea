@@ -48,7 +48,7 @@ class ZipCode(models.Model):
     last_checked = models.DateTimeField(blank=True, null=True)
 
     @property
-    def applicable_tax_rate(self):
+    def applicable_tax_rate(self) -> Decimal:
         nexuses = ZipCode.nexuses()
         zcs = nexuses + [self]
         ZipCode.__refresh_rates(zip_codes=zcs)
@@ -59,6 +59,11 @@ class ZipCode(models.Model):
                 return nexus.tax_rate
         # Destination Based
         return self.tax_rate if self.state.collects_saas_tax else Decimal("0.00")
+
+    @classmethod
+    def tax_rate_to_percentage(tax_rate: Decimal) -> Decimal:
+        percentage = tax_rate * Decimal("100.00")
+        return percentage.quantize(Decimal("0.0001"))
 
     @classmethod
     def get(cls, zip_code: str) -> ZipCodeType:
