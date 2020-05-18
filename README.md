@@ -90,14 +90,27 @@ from taxtea.models import ZipCode
 
 **Return** `type: ZipCode`
 
+### Class Method `tax_rate_to_percentage()`
+
+**Parameters**
+
+| Name     | Type    | Required | Default | Description                               |
+| -------- | ------- | -------- | ------- | ----------------------------------------- |
+| tax_rate | Decimal | yes      | n/a     | Tax Rate to be converted: Exampele `0.06` |
+
+**Return** `type: Decimal`
+
+### Property `applicable_tax_rate`
+
+**Return** `type: Decimal`
+
 ### Class Method `nexuses()`
 
 **Parameters**
 
->None 
+> None
 
 **Return** `type: [ZipCode]`
-
 
 ### Property `applicable_tax_rate`
 
@@ -106,7 +119,6 @@ from taxtea.models import ZipCode
 The function will return `0.00` if the state does not collect sales tax for SaaS.
 
 > **NOTE**: If the given Zip Code is in a state where you hold a nexus and that state is an ORIGIN-based sales tax state, the returned tax rate will be for the Zip Code of the nexus.
-
 
 ## State
 
