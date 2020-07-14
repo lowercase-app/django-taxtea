@@ -32,7 +32,7 @@ jobs:
       - name: "[Python] isort & Black Linting"
         run: |
           poetry run isort .
-          poetry run black ./lowercase
+          poetry run black .
       
       # Commit changes
       - name: "[Git] Commit linting changes"
