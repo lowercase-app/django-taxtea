@@ -4,7 +4,7 @@ name: CI
 
 on:
   repository_dispatch:
-    types: [lint-pass]
+    types: [lint-passed]
 
 jobs:
   build:
