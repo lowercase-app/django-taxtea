@@ -1,16 +1,16 @@
-from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
-from django.utils import timezone
 from datetime import timedelta
-
 from decimal import Decimal
 from typing import List, TypeVar
 
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import models
+from django.utils import timezone
 from localflavor.us.models import USStateField
+
 from taxtea import settings
+from taxtea.exceptions import InvalidZipCode
 from taxtea.services.avalara import TaxRate
 from taxtea.services.usps import ZipService
-from taxtea.exceptions import InvalidZipCode
 
 ZipCodeType = TypeVar("ZipCodeType", bound="ZipCode")
 

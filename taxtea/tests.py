@@ -1,10 +1,12 @@
+from decimal import Decimal
 from unittest.mock import patch
+
 from django.test import TestCase
 from model_bakery import baker
+
+from taxtea import settings
 from taxtea.models import State, ZipCode
 from taxtea.services.usps import ZipService
-from taxtea import settings
-from decimal import Decimal
 
 # Create your tests here.
 

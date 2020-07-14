@@ -1,5 +1,6 @@
-from django.apps import AppConfig
 import sys
+
+from django.apps import AppConfig
 
 
 class TaxTeaConfig(AppConfig):
