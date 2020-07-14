@@ -1,10 +1,11 @@
-import xmltodict
 from typing import List
-from taxtea import settings
-from taxtea.exceptions import USPSError
 
 # from django.conf import settings
 import httpx
+import xmltodict
+
+from taxtea import settings
+from taxtea.exceptions import USPSError
 
 
 class USPSService:

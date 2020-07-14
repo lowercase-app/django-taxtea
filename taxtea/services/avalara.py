@@ -1,5 +1,6 @@
-import httpx
 from decimal import Decimal
+
+import httpx
 
 from taxtea import settings
 from taxtea.exceptions import AvalaraError, AvalaraRateLimit
