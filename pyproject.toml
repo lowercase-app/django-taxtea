@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "taxtea"
-version = "0.6.0"
+name = "django-taxtea"
+version = "1.0.0"
 description = "TaxTea - A Django Tax App for Saas"
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 
@@ -15,6 +15,10 @@ django-localflavor = "^3.0.1"
 black = "^19.10b0"
 flake8 = "^3.7.9"
 model_bakery = "^1.1.0"
+isort = "^5.0.9"
+sphinx = "^3.1.2"
+sphinx-rtd-theme = "^0.5.0"
+safety = "^1.9.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
