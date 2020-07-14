@@ -9,25 +9,54 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='State',
+            name="State",
             fields=[
-                ('abbreviation', localflavor.us.models.USStateField(max_length=2, primary_key=True, serialize=False)),
-                ('collects_saas_tax', models.BooleanField(default=False)),
-                ('tax_base', models.CharField(choices=[('ORIGIN', 'Origin-based'), ('DESTINATION', 'Destination-based')], default='DESTINATION', max_length=30)),
+                (
+                    "abbreviation",
+                    localflavor.us.models.USStateField(
+                        max_length=2, primary_key=True, serialize=False
+                    ),
+                ),
+                ("collects_saas_tax", models.BooleanField(default=False)),
+                (
+                    "tax_base",
+                    models.CharField(
+                        choices=[
+                            ("ORIGIN", "Origin-based"),
+                            ("DESTINATION", "Destination-based"),
+                        ],
+                        default="DESTINATION",
+                        max_length=30,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ZipCode',
+            name="ZipCode",
             fields=[
-                ('code', models.CharField(max_length=9, primary_key=True, serialize=False)),
-                ('tax_rate', models.DecimalField(blank=True, decimal_places=4, max_digits=5, null=True)),
-                ('last_checked', models.DateTimeField(blank=True, null=True)),
-                ('state', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='zipcodes', to='taxtea.State')),
+                (
+                    "code",
+                    models.CharField(max_length=9, primary_key=True, serialize=False),
+                ),
+                (
+                    "tax_rate",
+                    models.DecimalField(
+                        blank=True, decimal_places=4, max_digits=5, null=True
+                    ),
+                ),
+                ("last_checked", models.DateTimeField(blank=True, null=True)),
+                (
+                    "state",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="zipcodes",
+                        to="taxtea.State",
+                    ),
+                ),
             ],
         ),
     ]
