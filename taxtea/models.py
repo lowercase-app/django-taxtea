@@ -1,21 +1,30 @@
-from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
-from django.utils import timezone
 from datetime import timedelta
-
 from decimal import Decimal
 from typing import List, TypeVar
 
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import models
+from django.utils import timezone
 from localflavor.us.models import USStateField
+
 from taxtea import settings
+from taxtea.exceptions import InvalidZipCode
 from taxtea.services.avalara import TaxRate
 from taxtea.services.usps import ZipService
-from taxtea.exceptions import InvalidZipCode
 
 ZipCodeType = TypeVar("ZipCodeType", bound="ZipCode")
 
 
 class State(models.Model):
+    """
+    State [summary]
+
+    Args:
+        models ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
 
@@ -40,6 +49,19 @@ class State(models.Model):
 
 
 class ZipCode(models.Model):
+    """
+    ZipCode [summary]
+
+    Args:
+        models ([type]): [description]
+
+    Raises:
+        InvalidZipCode: [description]
+
+    Returns:
+        [type]: [description]
+    """
+
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="zipcodes")
     code = models.CharField(max_length=9, primary_key=True)
     tax_rate = models.DecimalField(

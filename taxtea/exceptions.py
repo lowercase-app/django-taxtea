@@ -1,5 +1,5 @@
 """
-Tax Tea Exceptions
+TaxTea Exceptions
 """
 
 

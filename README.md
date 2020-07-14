@@ -1,4 +1,4 @@
-# TaxTea
+# Django TaxTea
 
 Django Tax App for SaaS.
 
