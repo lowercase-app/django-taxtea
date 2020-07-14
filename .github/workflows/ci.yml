@@ -1,9 +1,10 @@
 name: CI
 
 
+
 on:
-  push:
-    branches: [master, dev]
+  repository_dispatch:
+    types: [lint-pass]
 
 jobs:
   build:
