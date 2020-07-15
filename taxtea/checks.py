@@ -1,9 +1,20 @@
 from django.core import checks
+from django.apps.config import AppConfig
+from typing import List
 
 
 @checks.register("TaxTea")
-def check_USPS_api_auth(appconfig=None, **kwargs):
-    """Checks if the user has supplied a USPS username/password."""
+def check_USPS_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+    """
+    check_USPS_api_auth:
+        Checks if the user has supplied a USPS username/password.
+
+    Args:
+        appconfig (AppConfig, optional): Defaults to None.
+
+    Returns:
+        List[checks.CheckMessage]: List of Django CheckMessages
+    """
     from . import settings as tax_settings
 
     messages = []
@@ -17,8 +28,17 @@ def check_USPS_api_auth(appconfig=None, **kwargs):
 
 
 @checks.register("TaxTea")
-def check_Avalara_api_auth(appconfig=None, **kwargs):
-    """Checks if the user has supplied a Avalara username/password."""
+def check_Avalara_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+    """
+    check_Avalara_api_auth:
+        Checks if the user has supplied a Avalara username/password.
+
+    Args:
+        appconfig (AppConfig, optional): Defaults to None.
+
+    Returns:
+        List[checks.CheckMessage]: List of Django CheckMessages
+    """
     from . import settings as tax_settings
 
     messages = []
@@ -36,8 +56,17 @@ def check_Avalara_api_auth(appconfig=None, **kwargs):
 
 
 @checks.register("TaxTea")
-def check_origin_zips(appconfig=None, **kwargs):
-    """Checks if the user has supplied at least one origin zip"""
+def check_origin_zips(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+    """
+    check_origin_zips:
+        Checks if the user has supplied at least one origin zip.
+
+    Args:
+        appconfig (AppConfig, optional): Defaults to None.
+
+    Returns:
+        List[checks.CheckMessage]: List of Django CheckMessages
+    """
     from . import settings as tax_settings
 
     messages = []
