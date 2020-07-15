@@ -23,7 +23,7 @@ class State(models.Model):
     Attributes:
         abbreviation (USStateField): State Abbreviaion -> NY
         collects_saas_tax (BooleanField): Whether a state collects SaaS tax
-        tax_base (CharField): Whether a state is ORIGIN ORIGIN or DESTINATION based
+        tax_base (CharField): Whether a state is ORIGIN or DESTINATION based
     """
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
