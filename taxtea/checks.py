@@ -1,6 +1,7 @@
-from django.core import checks
-from django.apps.config import AppConfig
 from typing import List
+
+from django.apps.config import AppConfig
+from django.core import checks
 
 
 @checks.register("TaxTea")
