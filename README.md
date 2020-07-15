@@ -8,8 +8,8 @@ Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does t
 
 ## Installation
 
-```
-poetry add git+https://github.com/lowercase-app/taxtea.git#1.0.0
+```bash
+poetry add django-taxtea
 ```
 
 ## Getting Started
@@ -17,10 +17,10 @@ poetry add git+https://github.com/lowercase-app/taxtea.git#1.0.0
 Add the following to your Django settings:
 
 ```python
-TAXTEA_USPS_USER = "XXXXXXXX" # required
-TAXTEA_AVALARA_USER = "XXXXXXXX" # required
-TAXTEA_AVALARA_PASSWORD = "XXXXXXXX" # required
-TAXTEA_NEXUSES = [("AZ", "12345"),] # required
+TAXTEA_USPS_USER = "XXXXXXXX"           # required
+TAXTEA_AVALARA_USER = "XXXXXXXX"        # required
+TAXTEA_AVALARA_PASSWORD = "XXXXXXXX"    # required
+TAXTEA_NEXUSES = [("AZ", "12345"),]     # required
 TAXTEA_TAX_RATE_INVALIDATE_INTERVAL = 7 # optional, default is 7 (days)
 ```
 
@@ -57,8 +57,8 @@ Add to `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
-	...,
-	"taxtea"
+    ...,
+    "taxtea"
 ]
 ```
 
@@ -75,6 +75,13 @@ Import the ZipCode model:
 ```python
 from taxtea.models import ZipCode
 ```
+
+## Resources
+
+TaxTea uses a list provided by taxjar to populate the states and their tax collection methods.
+- [SaaS Sales Tax](https://blog.taxjar.com/saas-sales-tax/)
+- [Origin / Destination States](https://blog.taxjar.com/charging-sales-tax-rates/)
+
 
 # Model Spec
 
