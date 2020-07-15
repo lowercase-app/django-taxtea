@@ -13,6 +13,11 @@ class AvalaraService:
 
     Note:
         Not to be used on its own.
+
+    Attributes:
+        BASE_URL (str): Avalara API base url
+        USER (str): Avalara API User
+        PASSWORD (str): Avalara API Password
     """
 
     BASE_URL = "https://rest.avatax.com/api/v2/taxrates"

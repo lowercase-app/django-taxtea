@@ -9,9 +9,15 @@ from taxtea.exceptions import USPSError
 
 class USPSService:
     """
-    Base service for interacting with the USPS API.
+    USPSService:
+        Base service for interacting with the USPS API.
 
-    Note: Class has no functionality on its own. Just holds service url and auth.
+    Note:
+        Class has no functionality on its own. Just holds service url and auth.
+
+    Attributes:
+        BASE_URL (str): USPS API base url
+        USER (str): USPS API User
     """
 
     BASE_URL = "https://secure.shippingapis.com/ShippingAPI.dll"
@@ -20,7 +26,11 @@ class USPSService:
 
 class ZipService(USPSService):
     """
-    Service to find the cities and states for a given zipcode(s).
+    ZipService:
+        Service to find the cities and states for a given zipcode(s).
+
+    Attributes:
+        BASE_URL (str): USPS API base url
     """
 
     BASE_URL = f"{USPSService.BASE_URL}?API=CityStateLookup"
