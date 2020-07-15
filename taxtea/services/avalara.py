@@ -52,7 +52,7 @@ class TaxRate(AvalaraService):
             raise AvalaraRateLimit
 
         try:
-            response.raise_for_statu()
+            response.raise_for_status()
         except httpx.exceptions.HttpError as e:
             raise AvalaraError(e)
 

@@ -4,7 +4,7 @@ from typing import List
 
 
 @checks.register("TaxTea")
-def check_USPS_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+def check_USPS_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
     """
     check_USPS_api_auth:
         Checks if the user has supplied a USPS username/password.
@@ -28,7 +28,7 @@ def check_USPS_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMessage
 
 
 @checks.register("TaxTea")
-def check_Avalara_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+def check_Avalara_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
     """
     check_Avalara_api_auth:
         Checks if the user has supplied a Avalara username/password.
@@ -56,7 +56,7 @@ def check_Avalara_api_auth(appconfig: AppConfig = None) -> List[checks.CheckMess
 
 
 @checks.register("TaxTea")
-def check_origin_zips(appconfig: AppConfig = None) -> List[checks.CheckMessage]:
+def check_origin_zips(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
     """
     check_origin_zips:
         Checks if the user has supplied at least one origin zip.
