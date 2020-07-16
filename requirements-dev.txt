@@ -195,6 +195,8 @@ snowballstemmer==2.0.0 \
 sphinx==3.1.2 \
     --hash=sha256:97dbf2e31fc5684bb805104b8ad34434ed70e6c588f6896991b2fdfd2bef8c00 \
     --hash=sha256:b9daeb9b39aa1ffefc2809b43604109825300300b987a24f45976c001ba1a8fd
+sphinx-autodoc-annotation==1.0-1 \
+    --hash=sha256:4a3d03081efe1e5f2bc9b9d00746550f45b9f543b0c79519c523168ca7f7d89a
 sphinx-rtd-theme==0.5.0 \
     --hash=sha256:373413d0f82425aaa28fb288009bf0d0964711d347763af2f1b65cafcb028c82 \
     --hash=sha256:22c795ba2832a169ca301cd0a083f7a434e09c538c70beb42782c073651b707d
@@ -204,6 +206,9 @@ sphinxcontrib-applehelp==1.0.2 \
 sphinxcontrib-devhelp==1.0.2 \
     --hash=sha256:ff7f1afa7b9642e7060379360a67e9c41e8f3121f2ce9164266f61b9f4b338e4 \
     --hash=sha256:8165223f9a335cc1af7ffe1ed31d2871f325254c0423bc0c4c7cd1c1e4734a2e
+sphinxcontrib-django==0.5.1 \
+    --hash=sha256:3b48a9067d8db4713d47e3a4160af10288d02d448c866d1b44b001adbe74cc1e \
+    --hash=sha256:73ef7fdbf2ed6d4f35b7ae709032bd5ac493d93cedd0624ea7b51bf5fce41267
 sphinxcontrib-htmlhelp==1.0.3 \
     --hash=sha256:e8f5bb7e31b2dbb25b9cc435c8ab7a79787ebf7f906155729338f3156d93659b \
     --hash=sha256:3c0bc24a2c41e340ac37c85ced6dafc879ab485c095b1d65d2461ac2f7cca86f
