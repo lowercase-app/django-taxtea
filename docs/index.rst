@@ -11,6 +11,7 @@ Welcome to Django TaxTea's documentation!
 .. toctree::
    :caption: Usage
 
+   
 
 .. toctree::
    :caption: Reference:

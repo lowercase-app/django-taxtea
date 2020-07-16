@@ -27,7 +27,6 @@ class AvalaraService:
 class TaxRate(AvalaraService):
     """
     Interface for the fetching Tax Rates from Avalara
-
     """
 
     BASE_URL = f"{AvalaraService.BASE_URL}/bypostalcode"

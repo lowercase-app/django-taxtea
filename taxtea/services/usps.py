@@ -25,10 +25,7 @@ class USPSService:
 
 class ZipService(USPSService):
     """
-    Service to find the cities and states for a given zipcode(s).
-
-    Attributes:
-        BASE_URL (str): USPS API base url
+    Service to find the cities and states for given zipcode(s).
     """
 
     BASE_URL = f"{USPSService.BASE_URL}?API=CityStateLookup"
