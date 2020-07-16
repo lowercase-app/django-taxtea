@@ -11,7 +11,8 @@ Welcome to Django TaxTea's documentation!
 .. toctree::
    :caption: Usage
 
-   
+   usage/getting_started
+   usage/stripe
 
 .. toctree::
    :caption: Reference:
