@@ -1,12 +1,28 @@
 [tool.poetry]
 name = "django-taxtea"
 version = "1.0.0"
-description = "TaxTea - A Django Tax App for Saas"
+description = "Django TaxTea - A Django app that provides up-to-date tax rates for SaaS."
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/lowercase-app/django-taxtea"
 documentation = "https://djangotaxtea.com/"
+
+keywords = [
+    "django",
+    "tax",
+    "stripe",
+    "SaaS"
+]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: Django",
+]
 
 packages = [
     { include = "taxtea" }
