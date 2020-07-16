@@ -12,7 +12,6 @@
 #
 import os
 import sys
-import taxtea
 
 import django
 from django.conf import settings
