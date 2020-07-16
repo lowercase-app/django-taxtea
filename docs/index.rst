@@ -3,11 +3,20 @@ Welcome to Django TaxTea's documentation!
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
-   modules/models
-   modules/services
+   installation
+
+
+.. toctree::
+   :caption: Usage
+
+
+.. toctree::
+   :caption: Reference:
+
+   reference/models
+   reference/services
 
 Indices and tables
 ==================

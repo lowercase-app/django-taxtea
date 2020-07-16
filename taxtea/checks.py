@@ -79,8 +79,8 @@ def check_origin_zips(app_configs: AppConfig = None) -> List[checks.CheckMessage
         # If there is no TAX_NEXUS, then the next check will throw an IndexError
         return messages
 
-    state, zipcode = tax_settings.NEXUSES[0]
-    if not state and not zipcode:
+    state, zip_code = tax_settings.NEXUSES[0]
+    if not state and not zip_code:
         msg = "Could not find a valid Nexus tuple."
         hint = "Add at least one Nexus tuple ('STATE', 'ZIPCODE') to your settings."
         messages.append(checks.Critical(msg, hint=hint, id="tax.C005"))

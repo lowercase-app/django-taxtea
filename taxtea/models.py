@@ -17,33 +17,43 @@ StateType = TypeVar("StateType", bound="State")
 
 
 class State(models.Model):
-    """
-    Django Model for State
+    """Django Model for State
     """
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
 
-    abbreviation = USStateField(blank=False, null=False, primary_key=True)
-    collects_saas_tax = models.BooleanField(default=False)
-    tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
+    abbreviation = USStateField(
+        blank=False,
+        null=False,
+        primary_key=True,
+        help_text="Abbreviation of State -> NY",
+    )
+    collects_saas_tax = models.BooleanField(
+        default=False, help_text="If the State collects SaaS Tax"
+    )
+    tax_base = models.CharField(
+        max_length=30,
+        choices=TAX_BASES,
+        default="DESTINATION",
+        help_text="SaaS Tax Collection Method",
+    )
 
     @classmethod
-    def state_for_zip(cls, zipcode: str) -> StateType:
-        """
-        Get State for a given ZipCode string
+    def state_for_zip(cls, zip_code: str) -> StateType:
+        """Get State for a given ZipCode string
 
         Args:
-            zipcode (str): ZipCode to look up
+            zip_code (str): ZipCode to look up
 
         Returns:
             State: State that the given ZipCode belongs to
         """
         try:
-            state = cls.objects.get(zipcodes=zipcode)
+            state = cls.objects.get(zip_code=zip_code)
             return state
         except ObjectDoesNotExist:
             # nothing in DB, search USPS for it
-            res = ZipService.lookup_zip(zipcode)
+            res = ZipService.lookup_zip(zip_code)
             # update db
             state = cls.objects.get(abbreviation=res.get("State"))
             return state
@@ -53,38 +63,52 @@ class State(models.Model):
 
 
 class ZipCode(models.Model):
-    """
-    ZipCode:
-        Django Model for ZipCode
+    """Django Model for ZipCode
 
-    Attributes:
-        state (ForeignKey): Foreign Key to the State the ZipCode is in
-        code (CharField): The 5 digit Zip Code
-        tax_rate (DecimalField): Tax Rate for the given ZipCode -> 0.0625
-        last_checked (DateTimeField): DateTime of the last time the tax rate was refreshed
     """
 
-    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="zipcodes")
-    code = models.CharField(max_length=9, primary_key=True)
-    tax_rate = models.DecimalField(
-        blank=True, max_digits=5, decimal_places=4, null=True
+    state = models.ForeignKey(
+        State,
+        on_delete=models.CASCADE,
+        related_name="zipcodes",
+        help_text="Foreign Key to the State the ZipCode is in",
     )
-    last_checked = models.DateTimeField(blank=True, null=True)
+    code = models.CharField(
+        max_length=9, primary_key=True, help_text="The 5 digit Zip Code"
+    )
+    tax_rate = models.DecimalField(
+        blank=True,
+        max_digits=5,
+        decimal_places=4,
+        null=True,
+        help_text="Tax Rate for the given ZipCode -> 0.0625",
+    )
+    last_checked = models.DateTimeField(
+        blank=True,
+        null=True,
+        help_text="DateTime of the last time the tax rate was refreshed",
+    )
 
     @property
     def applicable_tax_rate(self) -> Decimal:
-        """
-        Calculates the applicable tax rate for a given ZipCode.
+        """Calculates the applicable tax rate for a given ZipCode.
+
         Always use this over the the ZipCode's `tax_rate` field, becuase
         it takes into account tax nexues & Origin/Destination States to provide
         a true tax rate to charge.
+
+        The function will return `0.00` if the state does not collect sales tax for SaaS.
+
+        Note:
+            If the given Zip Code is in a state where you hold a nexus and that state is an 
+            ORIGIN-based sales tax state, the returned tax rate will be for the Zip Code of the nexus.
 
         Returns:
             Decimal: Tax Rate to charge for ZipCode (0.0625)
         """
         nexuses = ZipCode.nexuses()
         zcs = nexuses + [self]
-        ZipCode._refresh_rates(zip_codes=zcs)
+        ZipCode.refresh_rates(zip_codes=zcs)
         self.refresh_from_db()
 
         for nexus in ZipCode.nexuses():
@@ -95,22 +119,21 @@ class ZipCode(models.Model):
 
     @classmethod
     def tax_rate_to_percentage(cls, tax_rate: Decimal) -> Decimal:
-        """
-        Converts tax rate to percentage
+        """Converts tax rate to percentage
 
         Args:
             tax_rate (Decimal): Tax Rate
 
         Returns:
-            Tax Rate Percentage (Decimal): Example -> 6.2500
+            Decimal: Tax Rate Percentage Example -> 6.2500
         """
         percentage = tax_rate * Decimal("100.00")
         return percentage.quantize(Decimal("0.0001"))
 
     @classmethod
     def get(cls, zip_code: str) -> ZipCodeType:
-        """
-        Get ZipCode Object for zip_code string.
+        """Get ZipCode Object for zip_code string.
+
         Always use this method to fetch ZipCodes, as it will
         get or create the ZipCode object.
 
@@ -118,9 +141,9 @@ class ZipCode(models.Model):
             zip_code (str): Zip Code to Query
 
         Returns:
-            ZipCodeType: ZipCode Db Object
+            ZipCode: ZipCode Db Object
         """
-        cls._validate(zip_code)
+        cls.validate(zip_code)
         try:
             return cls.objects.select_related("state").get(pk=zip_code)
         except ObjectDoesNotExist:
@@ -129,11 +152,10 @@ class ZipCode(models.Model):
 
     @classmethod
     def nexuses(cls) -> List[ZipCodeType]:
-        """
-        Fetch Nexus ZipCodes
+        """Fetch Nexus ZipCodes
 
         Returns:
-            List[ZipCodeType]: List of Nexus ZipCodes
+            List[ZipCode]: List of Nexus ZipCode Objects
         """
         return [
             cls.objects.get_or_create(
@@ -143,11 +165,11 @@ class ZipCode(models.Model):
         ]
 
     @classmethod
-    def _refresh_rates(cls, zip_codes: List[ZipCodeType], force=False) -> None:
-        """
-        Refresh Rates for a given list of ZipCodes.
-        Will skip any ZipCodes that are still inside the `TAX_RATE_INVALIDATE_INTERVAL`
-        unless `force=True`.
+    def refresh_rates(cls, zip_codes: List[ZipCodeType], force=False) -> None:
+        """Refresh Rates for a given list of ZipCode Objects.
+
+        ZipCodes that are still inside the `TAX_RATE_INVALIDATE_INTERVAL`
+        are skipped unless `force=True`.
 
         Args:
             zip_codes (List[ZipCodeType]): ZipCode Objects
@@ -172,9 +194,8 @@ class ZipCode(models.Model):
         return f"ZipCode: {self.code}, {self.state}"
 
     @classmethod
-    def _validate(cls, zip_code: str) -> None:
-        """
-        Validates a Zip Code string
+    def validate(cls, zip_code: str) -> None:
+        """Validates a Zip Code string
 
         Args:
             zip_code (str):
