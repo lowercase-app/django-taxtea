@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tax",
+    "tests",
+    "taxtea",
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "shell.urls"
+# ROOT_URLCONF = "shell.urls"
 
 TEMPLATES = [
     {
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "shell.wsgi.application"
+# WSGI_APPLICATION = "shell.wsgi.application"
 
 
 # Database
@@ -113,3 +114,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+
+#######
+# Tax #
+#######
+TAXTEA_USPS_USER = "970LOWER7933"
+TAXTEA_AVALARA_USER = "hello@lowercase.app"
+TAXTEA_AVALARA_PASSWORD = "clof3flen!GEK"
+TAXTEA_NEXUSES = [("NC", "27587"), ("PA", "15216")]

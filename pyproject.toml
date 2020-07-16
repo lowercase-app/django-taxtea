@@ -30,7 +30,7 @@ packages = [
 
 
 exclude = [
-    "manage.py"
+    "manage.py",
 ]
 
 include = [

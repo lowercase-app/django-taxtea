@@ -49,7 +49,7 @@ class State(models.Model):
             State: State that the given ZipCode belongs to
         """
         try:
-            state = cls.objects.get(zip_code=zip_code)
+            state = cls.objects.get(zipcodes=zip_code)
             return state
         except ObjectDoesNotExist:
             # nothing in DB, search USPS for it
