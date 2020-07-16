@@ -1,4 +1,0 @@
-include LICENSE
-include README.md
-recursive-include tax *.html *.png *.gif *.py *.txt
-recursive-include docs *
