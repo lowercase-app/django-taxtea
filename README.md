@@ -9,7 +9,7 @@ Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does t
 ## Installation
 
 ```bash
-poetry add django-taxtea
+pip install django-taxtea
 ```
 
 ## Getting Started
@@ -23,6 +23,8 @@ TAXTEA_AVALARA_PASSWORD = "XXXXXXXX"    # required
 TAXTEA_NEXUSES = [("AZ", "12345"),]     # required
 TAXTEA_TAX_RATE_INVALIDATE_INTERVAL = 7 # optional, default is 7 (days)
 ```
+
+## Required Accounts & Information
 
 ### USPS
 
@@ -79,11 +81,11 @@ from taxtea.models import ZipCode
 ## Resources
 
 TaxTea uses a list provided by taxjar to populate the states and their tax collection methods.
+
 - [SaaS Sales Tax](https://blog.taxjar.com/saas-sales-tax/)
 - [Origin / Destination States](https://blog.taxjar.com/charging-sales-tax-rates/)
 
-
-# Model Spec
+## Model Spec
 
 ## ZipCode
 
