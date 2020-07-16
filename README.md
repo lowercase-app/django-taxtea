@@ -93,9 +93,9 @@ TaxTea uses a list provided by taxjar to populate the states and their tax colle
 
 **Parameters**
 
-| Name    | Type | Required | Default | Description                     |
-| ------- | ---- | -------- | ------- | ------------------------------- |
-| zipcode | str  | yes      | n/a     | The zipcode you wish to look up |
+| Name    | Type | Required | Default | Description            |
+| ------- | ---- | -------- | ------- | ---------------------- |
+| zipcode | str  | yes      | n/a     | The zipcode to look up |
 
 **Return** `type: ZipCode`
 
@@ -103,9 +103,9 @@ TaxTea uses a list provided by taxjar to populate the states and their tax colle
 
 **Parameters**
 
-| Name     | Type    | Required | Default | Description                               |
-| -------- | ------- | -------- | ------- | ----------------------------------------- |
-| tax_rate | Decimal | yes      | n/a     | Tax Rate to be converted: Exampele `0.06` |
+| Name     | Type    | Required | Default | Description                              |
+| -------- | ------- | -------- | ------- | ---------------------------------------- |
+| tax_rate | Decimal | yes      | n/a     | Tax Rate to be converted: Example `0.06` |
 
 **Return** `type: Decimal`
 
@@ -135,8 +135,8 @@ The function will return `0.00` if the state does not collect sales tax for SaaS
 
 **Parameters**
 
-| Name    | Type | Required | Default | Description                     |
-| ------- | ---- | -------- | ------- | ------------------------------- |
-| zipcode | str  | yes      | n/a     | The zipcode you wish to look up |
+| Name    | Type | Required | Default | Description            |
+| ------- | ---- | -------- | ------- | ---------------------- |
+| zipcode | str  | yes      | n/a     | The zipcode to look up |
 
 **Return** `type: State`
