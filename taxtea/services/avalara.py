@@ -8,8 +8,7 @@ from taxtea.exceptions import AvalaraError, AvalaraRateLimit
 
 class AvalaraService:
     """
-    AvalaraService:
-        Shell service that has no functionality. Holds authentication and url for Avalara.
+    The Abstract Service that holds authentication & base url for Avalara.
 
     Note:
         Not to be used on its own.
@@ -27,28 +26,26 @@ class AvalaraService:
 
 class TaxRate(AvalaraService):
     """
-    TaxRate:
-        Interface for the fetching Tax Rates from Avalara
+    Interface for the fetching Tax Rates from Avalara
 
     Args:
-        AvalaraService (AvalaraService): Inherits from AvalaraService
+        AvalaraService: Inherits from AvalaraService
     """
 
     def by_zip_code(zipcode: str, country: str = "US") -> Decimal:
         """
-        by_zip_code:
-            Get Tax Rate for Zip Code from Avalara
+        Get Tax Rate for Zip Code from Avalara
 
         Args:
-            zipcode (str): 5 Digit Zip Code
-            country (str, optional): Country code. Defaults to "US".
+            zipcode: 5 Digit Zip Code
+            country: Country code. Defaults to "US".
 
         Raises:
             AvalaraRateLimit: Avalara Limit Reached, retry request later
             AvalaraError: Generic Avalara Error
 
         Returns:
-            taxrate (Decimal): Decimal value of Tax Rate, example - 0.0625
+            Decimal: Decimal value of Tax Rate, example - 0.0625
         """
         url = f"{AvalaraService.BASE_URL}/bypostalcode?country={country}&postalCode={zipcode}"
 

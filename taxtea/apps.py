@@ -7,7 +7,7 @@ class TaxTeaConfig(AppConfig):
     and event handlers once Django is ready.
     """
 
-    name = "django-taxtea"
+    name = "taxtea"
     verobose_name = "Django TaxTea"
 
     def ready(self):

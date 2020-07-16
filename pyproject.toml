@@ -23,6 +23,8 @@ isort = "^5.0.9"
 sphinx = "^3.1.2"
 sphinx-rtd-theme = "^0.5.0"
 safety = "^1.9.0"
+sphinxcontrib_django = "^0.5.1"
+sphinx_autodoc_annotation = "^1.0-1"
 
 [build-system]
 requires = ["poetry>=0.12"]

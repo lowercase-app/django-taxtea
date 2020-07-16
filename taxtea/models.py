@@ -13,17 +13,12 @@ from taxtea.services.avalara import TaxRate
 from taxtea.services.usps import ZipService
 
 ZipCodeType = TypeVar("ZipCodeType", bound="ZipCode")
+StateType = TypeVar("StateType", bound="State")
 
 
 class State(models.Model):
     """
-    State:
-        Django Model for State
-
-    Attributes:
-        abbreviation (USStateField): State Abbreviaion -> NY
-        collects_saas_tax (BooleanField): Whether a state collects SaaS tax
-        tax_base (CharField): Whether a state is ORIGIN or DESTINATION based
+    Django Model for State
     """
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
@@ -33,15 +28,15 @@ class State(models.Model):
     tax_base = models.CharField(max_length=30, choices=TAX_BASES, default="DESTINATION")
 
     @classmethod
-    def state_for_zip(cls, zipcode: str):
+    def state_for_zip(cls, zipcode: str) -> StateType:
         """
-        state_for_zip [summary]
+        Get State for a given ZipCode string
 
         Args:
-            zipcode (str): [description]
+            zipcode (str): ZipCode to look up
 
         Returns:
-            [type]: [description]
+            State: State that the given ZipCode belongs to
         """
         try:
             state = cls.objects.get(zipcodes=zipcode)
@@ -79,11 +74,10 @@ class ZipCode(models.Model):
     @property
     def applicable_tax_rate(self) -> Decimal:
         """
-        applicable_tax_rate:
-            Calculates the applicable tax rate for a given ZipCode.
-            Always use this over the the ZipCode's `tax_rate` field, becuase
-            it takes into account tax nexues & Origin/Destination States to provide
-            a true tax rate to charge.
+        Calculates the applicable tax rate for a given ZipCode.
+        Always use this over the the ZipCode's `tax_rate` field, becuase
+        it takes into account tax nexues & Origin/Destination States to provide
+        a true tax rate to charge.
 
         Returns:
             Decimal: Tax Rate to charge for ZipCode (0.0625)
@@ -102,8 +96,7 @@ class ZipCode(models.Model):
     @classmethod
     def tax_rate_to_percentage(cls, tax_rate: Decimal) -> Decimal:
         """
-        tax_rate_to_percentage:
-            Converts tax rate to percentage
+        Converts tax rate to percentage
 
         Args:
             tax_rate (Decimal): Tax Rate
@@ -117,10 +110,9 @@ class ZipCode(models.Model):
     @classmethod
     def get(cls, zip_code: str) -> ZipCodeType:
         """
-        get:
-            Get ZipCode Object for zip_code string.
-            Always use this method to fetch ZipCodes, as it will
-            get or create the ZipCode object.
+        Get ZipCode Object for zip_code string.
+        Always use this method to fetch ZipCodes, as it will
+        get or create the ZipCode object.
 
         Args:
             zip_code (str): Zip Code to Query
@@ -138,8 +130,7 @@ class ZipCode(models.Model):
     @classmethod
     def nexuses(cls) -> List[ZipCodeType]:
         """
-        nexuses:
-            Fetch Nexus ZipCodes
+        Fetch Nexus ZipCodes
 
         Returns:
             List[ZipCodeType]: List of Nexus ZipCodes
@@ -154,10 +145,9 @@ class ZipCode(models.Model):
     @classmethod
     def _refresh_rates(cls, zip_codes: List[ZipCodeType], force=False) -> None:
         """
-        _refresh_rates:
-            Refresh Rates for a given list of ZipCodes.
-            Will skip any ZipCodes that are still inside the `TAX_RATE_INVALIDATE_INTERVAL`
-            unless `force=True`.
+        Refresh Rates for a given list of ZipCodes.
+        Will skip any ZipCodes that are still inside the `TAX_RATE_INVALIDATE_INTERVAL`
+        unless `force=True`.
 
         Args:
             zip_codes (List[ZipCodeType]): ZipCode Objects
@@ -184,8 +174,7 @@ class ZipCode(models.Model):
     @classmethod
     def _validate(cls, zip_code: str) -> None:
         """
-        _validate:
-            Validates a Zip Code string
+        Validates a Zip Code string
 
         Args:
             zip_code (str):
