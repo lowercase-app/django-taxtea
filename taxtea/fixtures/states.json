@@ -1,0 +1,359 @@
+[
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "AL",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "AK" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "AS" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "AZ",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "AR",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "CA",
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "CO"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "CT",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "DE" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "DC",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "FM" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "FL"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "GA",
+      "collects_saas_tax": true
+    }
+  },
+  { "model": "taxtea.state", "fields": { "abbreviation": "GU" } },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "HI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "ID"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "IL",
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "IN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "IA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "KS"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "KY"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "LA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "ME",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "MH" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MD",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MI"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MS",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "MO",
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "MT" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NE"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NV"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "NH" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NJ"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NM",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NY",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "NC"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "ND"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "MP" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "OH",
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "OK"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "OR" }
+  },
+  { "model": "taxtea.state", "fields": { "abbreviation": "PW" } },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "PA",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "PR" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "RI",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "SC",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "SD",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "TN",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "TX",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "UT",
+      "collects_saas_tax": true,
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "VT"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": { "abbreviation": "VI" }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "VA",
+      "tax_base": "ORIGIN"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "WA",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "WV",
+      "collects_saas_tax": true
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "WI"
+    }
+  },
+  {
+    "model": "taxtea.state",
+    "fields": {
+      "abbreviation": "WY"
+    }
+  }
+]
