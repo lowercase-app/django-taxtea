@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stripe Integration &mdash; Django TaxTea 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Models" href="../api-reference/models.html" />
+    <link rel="prev" title="Getting Started" href="getting-started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Django TaxTea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stripe Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capture-zip-code">Capture Zip Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taxtea-magic">TaxTea Magic 🧙‍♂️</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-stripe-tax-rate">Create Stripe Tax Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-subscription">Update Subscription</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-reference/services.html">Services</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Django TaxTea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Stripe Integration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/usage/stripe-integration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stripe-integration">
+<h1>Stripe Integration<a class="headerlink" href="#stripe-integration" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.lowercase.app/">lowercase</a> uses TaxTea integrated with Stripe to handle our tax collection. Here we’ll
+go through how to set up TaxTea to work with Stripe.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Capture Zip Code from Stripe Payment Method</p></li>
+<li><p>Use TaxTea to get what Tax Rate you need to charge for the Zip Code</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">Tax</span> <span class="pre">Rate</span></code> in Stripe</p></li>
+<li><p>Update Customer’s Subscription</p></li>
+</ol>
+</div>
+<div class="section" id="capture-zip-code">
+<h2>Capture Zip Code<a class="headerlink" href="#capture-zip-code" title="Permalink to this headline">¶</a></h2>
+<p>First things first, we need the <a class="reference external" href="https://stripe.com/docs/api/payment_methods/object">Payment Method</a> that your customer
+uses to pay for their subscription. There are a few different ways you can get this data. But for this example we’ll be using a Stripe
+Webhook event.</p>
+<p>We want to keep the Tax Rate in sync with the customer’s default payment method, so we’ll listen to the <code class="docutils literal notranslate"><span class="pre">customer.updated</span></code> event
+which will provide us a <a class="reference external" href="https://stripe.com/docs/api/customers/object">Customer Object</a> in the webhook’s data payload.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stripe</span>
+
+<span class="c1"># stripe_data is the contents of the `data` object in the webhook JSON payload</span>
+<span class="n">customer_object</span> <span class="o">=</span> <span class="n">stripe_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+
+<span class="c1"># use the walrus operator (Python 3.8) to store the id of `default_payment_method`</span>
+<span class="c1"># if it exists</span>
+<span class="k">if</span> <span class="n">d</span> <span class="o">:=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;invoice_settings&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;default_payment_method&quot;</span><span class="p">):</span>
+    <span class="c1"># Fetch the full payment method details via the stripe api</span>
+    <span class="n">payment_method</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">PaymentMethod</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="c1"># Traverse the Stripe Object to get the `postal_code`</span>
+    <span class="c1"># &quot;billing_details&quot;: {</span>
+    <span class="c1">#     &quot;address&quot;: {</span>
+    <span class="c1">#         &quot;city&quot;: null,</span>
+    <span class="c1">#         &quot;country&quot;: null,</span>
+    <span class="c1">#         &quot;line1&quot;: null,</span>
+    <span class="c1">#         &quot;line2&quot;: null,</span>
+    <span class="c1">#         &quot;postal_code&quot;: &quot;42424&quot;,</span>
+    <span class="c1">#         &quot;state&quot;: null</span>
+    <span class="c1">#         },</span>
+    <span class="c1">#     &quot;email&quot;: &quot;jenny@example.com&quot;,</span>
+    <span class="c1">#     &quot;name&quot;: null,</span>
+    <span class="c1">#     &quot;phone&quot;: &quot;+15555555555&quot;</span>
+    <span class="c1"># }</span>
+    <span class="n">zip_code</span> <span class="o">=</span> <span class="n">payment_method</span><span class="o">.</span><span class="n">billing_details</span><span class="o">.</span><span class="n">address</span><span class="o">.</span><span class="n">postal_code</span>
+    <span class="c1"># Save this Zip Code somewhere. In a user&#39;s settings, etc.</span>
+    <span class="c1"># We&#39;ll need it later</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are some cards that do not require a Zip Code. You can ensure that your customers use a payment method that
+has a Zip Code by enabling the <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">if</span> <span class="pre">ZIP</span> <span class="pre">code</span> <span class="pre">everification</span> <span class="pre">fails</span></code> <a class="reference external" href="https://stripe.com/docs/radar/rules#traditional-bank-checks">Radar Rule</a></p>
+</div>
+</div>
+<div class="section" id="taxtea-magic">
+<h2>TaxTea Magic 🧙‍♂️<a class="headerlink" href="#taxtea-magic" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">taxtea.models</span> <span class="kn">import</span> <span class="n">ZipCode</span>
+
+<span class="n">zip_code</span> <span class="o">=</span> <span class="n">ZipCode</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;{{Zip Code From above}}&quot;</span><span class="p">)</span>
+<span class="n">tax_rate</span> <span class="o">=</span> <span class="n">zip_code</span><span class="o">.</span><span class="n">applicable_tax_rate</span>
+<span class="n">percentage</span> <span class="o">=</span> <span class="n">ZipCode</span><span class="o">.</span><span class="n">tax_rate_to_percentage</span><span class="p">(</span><span class="n">tax_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-stripe-tax-rate">
+<h2>Create Stripe Tax Rate<a class="headerlink" href="#create-stripe-tax-rate" title="Permalink to this headline">¶</a></h2>
+<p>Before we update a subscription, we need to make sure that we have a <a class="reference external" href="https://stripe.com/docs/api/tax_rates/object">Tax Rate Object</a> in Stripe for this Zip Code.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stripe</span>
+<span class="c1"># You can get tax rates from stripe in batches of 100. You&#39;ll</span>
+<span class="c1"># need to traverse the returned objects to see if any have a</span>
+<span class="c1"># description equal to the Zip Code you&#39;re working with above.</span>
+
+<span class="c1"># Will look something like this...</span>
+<span class="n">tax_rates</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">TaxRate</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">match</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">tax_rate</span> <span class="ow">in</span> <span class="n">tax_rates</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tax_rate</span> <span class="o">==</span> <span class="n">zip_code</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># use this this tax rate</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+    <span class="c1"># Tax Rate doesn&#39;t exist, create it.</span>
+
+<span class="c1"># If your application uses dj-stripe, then the above logic is a lot easier</span>
+<span class="c1"># and looks like this.</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ObjectDoesNotExist</span>
+<span class="kn">from</span> <span class="nn">djstripe.models</span> <span class="kn">import</span> <span class="n">TaxRate</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tax_rate</span> <span class="o">=</span> <span class="n">TaxRate</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">zip_code</span><span class="p">,</span> <span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ObjectDoesNotExist</span><span class="p">:</span>
+    <span class="c1"># Tax Rate doesn&#39;t exist, create it.</span>
+
+<span class="c1">###################</span>
+<span class="c1"># Create Tax Rate #</span>
+<span class="c1">###################</span>
+
+<span class="n">tax_rate</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">TaxRate</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">display_name</span><span class="o">=</span><span class="s2">&quot;Sales Tax&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">zip_code</span><span class="p">,</span> <span class="c1"># set the description to the zip_code for easy querying</span>
+    <span class="n">percentage</span><span class="o">=</span><span class="n">percentage</span><span class="p">,</span> <span class="c1"># use the percentage we calculated. Stripe uses percentages, not decimals.</span>
+    <span class="n">inclusive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-subscription">
+<h2>Update Subscription<a class="headerlink" href="#update-subscription" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a Tax Rate in Stripe for this customer we just have to apply it to their subscription.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stripe</span>
+
+<span class="c1"># You&#39;ll need to get your customer&#39;s subscription id for this part</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">Subscription</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="s2">&quot;{{Customer ID}}&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">stripe_sub_data</span> <span class="o">=</span> <span class="n">stripe</span><span class="o">.</span><span class="n">Subscription</span><span class="o">.</span><span class="n">modify</span><span class="p">(</span>
+            <span class="n">sub</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">default_tax_rates</span><span class="o">=</span><span class="p">[</span><span class="n">tax_rate</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>🚀 And that’s it! You’re done. You can go into your Stripe dashboard and see that the invoice will now have a Sales Tax
+line item.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api-reference/models.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting-started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, lowercase technologies llc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
