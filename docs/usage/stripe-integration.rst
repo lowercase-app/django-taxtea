@@ -126,7 +126,7 @@ First, we're going to have to make sure that we have a `Tax Rate Object <https:/
     )
 
     
-Now that we have a tax rate in Stipe for this customer we just have to apply it to their subscription. 
+Now that we have a tax rate in Stripe for this customer we just have to apply it to their subscription. 
 
 .. code-block:: Python
 
