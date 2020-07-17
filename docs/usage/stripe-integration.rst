@@ -84,17 +84,17 @@ TaxTea Magic 🧙‍♂️
 Update Subscription
 --------------------
 
-First, we're going to have to make sure that we have a `Tax Rate Object <https://stripe.com/docs/api/tax_rates/object>`_ in Stripe for this Zip Code. 
+Before we update a subscription, we need to make sure that we have a `Tax Rate Object <https://stripe.com/docs/api/tax_rates/object>`_ in Stripe for this Zip Code. 
 
 
 .. code-block:: Python
 
     import stripe
-    # You can get tax rates from stripe 100 at a time. You'll
+    # You can get tax rates from stripe in batches of 100. You'll
     # need to traverse the returned objects to see if any have a
     # description equal to the Zip Code you're working with above. 
     
-    # Would look something like this...
+    # Will look something like this...
     tax_rates = stripe.TaxRate.list(limit=100, active=True)
     match = False
     for tax_rate in tax_rates.data:
@@ -121,12 +121,12 @@ First, we're going to have to make sure that we have a `Tax Rate Object <https:/
     tax_rate = stripe.TaxRate.create(
         display_name="Sales Tax",
         description=zip_code, # set the description to the zip_code for easy querying
-        percentage=percentage, # use the percentage we calcualted. Stripe uses percentages, not decimals.
+        percentage=percentage, # use the percentage we calculated. Stripe uses percentages, not decimals.
         inclusive=False, 
     )
 
     
-Now that we have a tax rate in Stripe for this customer we just have to apply it to their subscription. 
+Now that we have a Tax Rate in Stripe for this customer we just have to apply it to their subscription. 
 
 .. code-block:: Python
 
