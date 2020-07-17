@@ -14,7 +14,7 @@ Install Django TaxTea:
 Configuration
 ---------------
 
-Add ``django-taxtea`` to your ``INSTALLED_APPS``:
+Add ``taxtea`` to your ``INSTALLED_APPS``:
 
 .. code-block:: python
 
