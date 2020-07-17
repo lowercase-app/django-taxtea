@@ -7,18 +7,17 @@ Welcome to Django TaxTea's documentation!
 
    installation
 
-
 .. toctree::
    :caption: Usage
 
-   usage/getting_started
-   usage/stripe
+   usage/getting-started
+   usage/stripe-integration
 
 .. toctree::
-   :caption: Reference:
+   :caption: API Reference:
 
-   reference/models
-   reference/services
+   api-reference/models
+   api-reference/services
 
 Indices and tables
 ==================

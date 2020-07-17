@@ -2,7 +2,7 @@
 Installation
 ============
 
-Get the distribution
+Get TaxTea
 ---------------------
 
 Install Django TaxTea:
