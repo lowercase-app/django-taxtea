@@ -143,7 +143,7 @@ Now that we have a Tax Rate in Stripe for this customer we just have to apply it
                 sub.id, default_tax_rates=[tax_rate.id]
             )
 
-🚀 And that's it! You're done. You can go into your stripe dashboard and see that the invoice will now have a Sales Tax
+🚀 And that's it! You're done. You can go into your Stripe dashboard and see that the invoice will now have a Sales Tax
 line item. 
 
     
