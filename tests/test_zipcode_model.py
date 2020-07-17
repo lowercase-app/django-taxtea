@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from django.test import TestCase
 from model_bakery import baker
 
@@ -55,4 +56,3 @@ class TestZipCodeModel(TestCase):
     def test_applicable_tax_rate(self):
 
         self.assertEqual(self.zipcode.applicable_tax_rate, Decimal(0.00))
-

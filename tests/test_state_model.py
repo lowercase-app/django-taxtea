@@ -1,6 +1,7 @@
+from unittest.mock import patch
+
 from django.test import TestCase
 from model_bakery import baker
-from unittest.mock import patch
 
 from taxtea.models import State
 
