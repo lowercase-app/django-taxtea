@@ -15,7 +15,9 @@ Overview
 
 #. Use TaxTea to get what Tax Rate you need to charge for the Zip Code
 
-#. Create a ``Tax Rate`` in Stripe and attach it to the customer's Subscription
+#. Create a ``Tax Rate`` in Stripe
+
+#. Update Customer's Subscription
 
 
 
@@ -81,8 +83,8 @@ TaxTea Magic 🧙‍♂️
     tax_rate = zip_code.applicable_tax_rate
     percentage = ZipCode.tax_rate_to_percentage(tax_rate)
 
-Update Subscription
---------------------
+Create Stripe Tax Rate
+-----------------------
 
 Before we update a subscription, we need to make sure that we have a `Tax Rate Object <https://stripe.com/docs/api/tax_rates/object>`_ in Stripe for this Zip Code. 
 
@@ -125,7 +127,9 @@ Before we update a subscription, we need to make sure that we have a `Tax Rate O
         inclusive=False, 
     )
 
-    
+Update Subscription
+--------------------
+
 Now that we have a Tax Rate in Stripe for this customer we just have to apply it to their subscription. 
 
 .. code-block:: Python
