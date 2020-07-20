@@ -100,8 +100,7 @@ percentage = ZipCode.tax_rate_to_percentage(tax_rate)
 
 ## Docs
 
-Read the docs: [](https://www.djangotaxtea.com)
-
+Read the [docs](https://www.djangotaxtea.com).
 
 
 ## Resources
