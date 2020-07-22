@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "django-taxtea"
 version = "1.0.0"
-description = "Django TaxTea - A Django app that provides up-to-date tax rates for SaaS."
+description = "TaxTea - Django App that calculates tax rates for SaaS products"
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/lowercase-app/django-taxtea"
-documentation = "https://djangotaxtea.com/"
+documentation = "https://www.djangotaxtea.com/"
 
 keywords = [
     "django",
@@ -61,6 +61,7 @@ sphinx-rtd-theme = "^0.5.0"
 safety = "^1.9.0"
 sphinxcontrib_django = "^0.5.1"
 sphinx_autodoc_annotation = "^1.0-1"
+tox = "^3.17.1"
 
 [tool.poetry.scripts]
 build_docs = "docs:makedocs"
