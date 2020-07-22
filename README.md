@@ -1,6 +1,6 @@
 # Django TaxTea
 
-Django Tax App for SaaS.
+Django App that calculates tax rates for SaaS products
 
 Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does the heavy lifting and tells you exactly what sales tax, if any, you need to be charging your customers.
 
@@ -76,7 +76,32 @@ Import the ZipCode model:
 
 ```python
 from taxtea.models import ZipCode
+
+# Get the ZipCode Object from the database
+# If no object exists for this Zip Code, it will create one by
+# fetching data from the USPS API and storing it in the database.
+# At this point, there will be no `tax_rate` associated with it.
+
+zip_code = ZipCode.get("90210")
+
+# The `applicable_tax_rate` property is the workhorse of TaxTea.
+# It will fetch & store a tax rate from the Avalara API and then
+# use your tax nexuses to determine which tax rate is applicable.
+
+tax_rate = zip_code.applicable_tax_rate
+# Returns a Decimal object that will look like `0.0625`
+
+# For convenience, there is a classmethod to convert to a percent.
+
+percentage = ZipCode.tax_rate_to_percentage(tax_rate)
+# Returns a Decimal object that will look like `6.25`
+
 ```
+
+## Docs
+
+Read the [docs](https://www.djangotaxtea.com).
+
 
 ## Resources
 
