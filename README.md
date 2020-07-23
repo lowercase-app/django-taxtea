@@ -33,6 +33,12 @@
     <img src="https://img.shields.io/pypi/pyversions/django-taxtea.svg?style=flat-square"
       alt="Python Support" />
   </a>
+
+  <!-- Code Coverage -->
+  <a href="https://codecov.io/gh/lowercase-app/django-taxtea">
+    <img src="https://codecov.io/gh/lowercase-app/django-taxtea/branch/master/graph/badge.svg"
+      alt="Code Coverage" />
+  </a>
   <!-- License -->
   <a href="https://pypi.python.org/pypi/django-taxtea/">
     <img src="https://img.shields.io/pypi/l/django-taxtea.svg?style=flat-square"
