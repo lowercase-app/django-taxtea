@@ -1,7 +1,7 @@
 <h1 align="center">TaxTea</h1>
 
 <div align="center">
-  <strong>Django app that calculates tax rates for SaaS products :frog::tea:</strong>
+  <strong>Django app that calculates tax rates for SaaS products :frog: :tea:</strong>
 
 </div>
 
@@ -69,7 +69,7 @@
 
 ## Purpose
 
-Taxes are hard, but that shouldn't stop you from building your dreams. When building [lowercase](https://www.lowercase.app), we found out just how hard calculating the _right_ sales tax rate is. Thus, TaxTea was born. TaxTea does the heavy lifting, and tells you exactly what sales tax, if any, you need to charge your customers. So, sit back, sip some tea, and channel your inner [Kermit](https://i.kym-cdn.com/entries/icons/original/000/015/878/thatsnoneofmy.jpg) because tax rates are none of your business...anymore!
+Taxes are hard, but that shouldn't stop you from building your dreams. When building [lowercase](https://www.lowercase.app), we found out just how hard calculating the _right_ sales tax rate is. TaxTea does the heavy lifting, and tells you exactly what sales tax, if any, you need to charge your customers. So, sit back, sip some tea, and channel your inner [Kermit](https://i.kym-cdn.com/entries/icons/original/000/015/878/thatsnoneofmy.jpg) because tax rates are none of your business...anymore!
 
 > Currently only supporting US 🇺🇸
 
@@ -126,7 +126,7 @@ For example, if your incorporation state is an _Origin-based_ state and a custom
 
 _Destination-based_ sales tax means that the sales tax will be charged at the rate of the customer location. This is applicable for out of state transactions and transactions within a state that is not an Origin-based.
 
-Want to learn more? Here's a great article about [Origin vs. Destination-based Sales tax](https://blog.taxjar.com/charging-sales-tax-rates/) from Tax Jar.
+Want to learn more? Here's a great article about [Origin vs. Destination-based Sales tax](https://blog.taxjar.com/charging-sales-tax-rates/) from TaxJar.
 
 ## Usage
 
@@ -180,7 +180,7 @@ Read the [documentation](https://www.djangotaxtea.com).
 
 ## Resources
 
-TaxTea uses a list provided by taxjar to populate the states and their tax collection methods.
+TaxTea uses a list provided by TaxJar to populate the states and their tax collection methods.
 
 - [SaaS Sales Tax](https://blog.taxjar.com/saas-sales-tax/)
 - [Origin / Destination States](https://blog.taxjar.com/charging-sales-tax-rates/)
