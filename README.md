@@ -1,7 +1,7 @@
 <h1 align="center">TaxTea</h1>
 
 <div align="center">
-  <strong>Django App that calculates tax rates for SaaS products :frog::tea:</strong>
+  <strong>Django app that calculates tax rates for SaaS products :frog::tea:</strong>
 
 </div>
 
