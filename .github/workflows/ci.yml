@@ -3,9 +3,8 @@ name: CI
 
 
 on:
-  # Event only gets sent on default branch (master)
-  repository_dispatch:
-    types: [lint-passed]
+  push:
+    branches: [master]
 
 jobs:
   build:
