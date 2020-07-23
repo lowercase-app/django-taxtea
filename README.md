@@ -1,10 +1,79 @@
-# Django TaxTea
+<h1 align="center">TaxTea</h1>
 
-Django App that calculates tax rates for SaaS products
+<div align="center">
+  <strong>Django App that calculates tax rates for SaaS products :frog::tea:</strong>
 
-Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does the heavy lifting and tells you exactly what sales tax, if any, you need to be charging your customers.
+</div>
+
+<div align="center">
+  <sub>A little package that goes a long way. Built by
+  <a href="https://twitter.com/matt_strayer">Matt Strayer</a> and
+  <a href="https://github.com/choojs/choo/graphs/contributors">
+    contributors
+  </a>
+  </sub>
+</div>
+
+<br />
+
+<div align="center">
+  <!-- Stability -->
+  <a href="https://pypi.python.org/pypi/django-taxtea/">
+    <img src="https://img.shields.io/pypi/status/django-taxtea.svg?style=flat-square"
+      alt="Stability" />
+  </a>
+  <!-- Version -->
+  <a href="https://pypi.python.org/pypi/django-taxtea/">
+    <img src="https://img.shields.io/pypi/v/django-taxtea.svg?style=flat-square"
+      alt="PyPi version" />
+  </a>
+
+  <!-- Python Support -->
+  <a href="https://pypi.python.org/pypi/django-taxtea/">
+    <img src="https://img.shields.io/pypi/pyversions/django-taxtea.svg?style=flat-square"
+      alt="Python Support" />
+  </a>
+  <!-- License -->
+  <a href="https://pypi.python.org/pypi/django-taxtea/">
+    <img src="https://img.shields.io/pypi/l/django-taxtea.svg?style=flat-square"
+      alt="License" />
+  </a>
+  <!-- Sponsored -->
+  <a href="https://www.lowercase.app/">
+    <img src="https://img.shields.io/badge/Sponsored_By-lowercase-a463f2.svg?style=flat-square"
+      alt="Sponsored By" />
+  </a>
+</div>
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Purpose](#purpose)
+- [Features](#features)
+- [Installation](#installation)
+- [Settings](#settings)
+- [Required Accounts & Information](#required-accounts--information)
+  - [USPS](#usps)
+  - [Avalara](#avalara)
+  - [Nexuses](#nexuses)
+- [Usage](#usage)
+- [Example](#example)
+- [Documentation](#documentation)
+- [Resources](#resources)
+
+## Purpose
+
+Taxes are hard, but that shouldn't stop you from building your dreams. When building [lowercase](https://www.lowercase.app), we found out just how hard calculating the _right_ sales tax rate is. Thus, TaxTea was born. TaxTea does the heavy lifting, and tells you exactly what sales tax, if any, you need to charge your customers. So, sit back, sip some tea, and channel your inner [Kermit](https://i.kym-cdn.com/entries/icons/original/000/015/878/thatsnoneofmy.jpg) beacuase tax rates are none of your business...anymore!
 
 > Currently only supporting US 🇺🇸
+
+
+## Features
+
+- __Simple API:__ Get up & running in minutes.
+- __Tax Nexuses, Origin, & Destination Support:__ The three factors in calculating tax rates. TaxTea handles them all expertly.
+- __Up-to-date:__ No more fear of charging a wrong tax rate. TaxTea is always up to date.
+
 
 ## Installation
 
@@ -12,7 +81,7 @@ Taxes are hard. That shouldn't stop you from building your dreams. TaxTea does t
 pip install django-taxtea
 ```
 
-## Getting Started
+## Settings
 
 Add the following to your Django settings:
 
@@ -70,7 +139,7 @@ Run migrations:
 python manage.py migrate
 ```
 
-## Getting Tax Rates
+## Example
 
 Import the ZipCode model:
 
@@ -98,9 +167,9 @@ percentage = ZipCode.tax_rate_to_percentage(tax_rate)
 
 ```
 
-## Docs
+## Documentation
 
-Read the [docs](https://www.djangotaxtea.com).
+Read the [documentation](https://www.djangotaxtea.com).
 
 
 ## Resources
