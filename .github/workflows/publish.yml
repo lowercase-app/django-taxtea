@@ -1,7 +1,10 @@
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
-on: push
-
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    tags:        
+      - v*
 jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
