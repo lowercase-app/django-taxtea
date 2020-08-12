@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-taxtea"
-version = "1.0.0"
+version = "1.0.1"
 description = "TaxTea - Django App that calculates tax rates for SaaS products"
 authors = ["Matt Strayer <git@mattstrayer.com>"]
 license = "MIT"
