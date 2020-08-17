@@ -1,11 +1,11 @@
 from typing import List
 
 from django.apps.config import AppConfig
-from django.core import checks
+from django.core.checks import CheckMessage, Critical, Tags, register
 
 
-@checks.register("TaxTea")
-def check_USPS_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
+@register(Tags.compatibility)
+def check_USPS_api_auth(app_configs: AppConfig = None, **kwargs) -> List[CheckMessage]:
     """
     check_USPS_api_auth:
         Checks if the user has supplied a USPS username/password.
@@ -23,13 +23,15 @@ def check_USPS_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMessa
     if not tax_settings.USPS_USER:
         msg = "Could not find a USPS User."
         hint = "Add TAXTEA_USPS_USER to your settings."
-        messages.append(checks.Critical(msg, hint=hint, id="tax.C001"))
+        messages.append(Critical(msg, hint=hint, id="tax.C001"))
 
     return messages
 
 
-@checks.register("TaxTea")
-def check_Avalara_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
+@register(Tags.compatibility)
+def check_Avalara_api_auth(
+    app_configs: AppConfig = None, **kwargs
+) -> List[CheckMessage]:
     """
     check_Avalara_api_auth:
         Checks if the user has supplied a Avalara username/password.
@@ -47,17 +49,17 @@ def check_Avalara_api_auth(app_configs: AppConfig = None) -> List[checks.CheckMe
     if not tax_settings.AVALARA_USER:
         msg = "Could not find a Avalara User."
         hint = "Add TAXTEA_AVALARA_USER to your settings."
-        messages.append(checks.Critical(msg, hint=hint, id="tax.C002"))
+        messages.append(Critical(msg, hint=hint, id="tax.C002"))
     if not tax_settings.AVALARA_PASSWORD:
         msg = "Could not find a Avalara Password."
         hint = "Add TAXTEA_AVALARA_PASSWORD to your settings."
-        messages.append(checks.Critical(msg, hint=hint, id="tax.C003"))
+        messages.append(Critical(msg, hint=hint, id="tax.C003"))
 
     return messages
 
 
-@checks.register("TaxTea")
-def check_origin_zips(app_configs: AppConfig = None) -> List[checks.CheckMessage]:
+@register(Tags.compatibility)
+def check_origin_zips(app_configs: AppConfig = None, **kwargs) -> List[CheckMessage]:
     """
     check_origin_zips:
         Checks if the user has supplied at least one origin zip.
@@ -75,7 +77,7 @@ def check_origin_zips(app_configs: AppConfig = None) -> List[checks.CheckMessage
     if not tax_settings.NEXUSES:
         msg = "Could not find a Nexus."
         hint = "Add at least one TAXTEA_NEXUSES to your settings."
-        messages.append(checks.Critical(msg, hint=hint, id="tax.C004"))
+        messages.append(Critical(msg, hint=hint, id="tax.C004"))
         # If there is no TAX_NEXUS, then the next check will throw an IndexError
         return messages
 
@@ -83,6 +85,6 @@ def check_origin_zips(app_configs: AppConfig = None) -> List[checks.CheckMessage
     if not state and not zip_code:
         msg = "Could not find a valid Nexus tuple."
         hint = "Add at least one Nexus tuple ('STATE', 'ZIPCODE') to your settings."
-        messages.append(checks.Critical(msg, hint=hint, id="tax.C005"))
+        messages.append(Critical(msg, hint=hint, id="tax.C005"))
 
     return messages
