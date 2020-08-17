@@ -1,7 +1,7 @@
 from typing import List
 
 from django.apps.config import AppConfig
-from django.core.checks import register, Tags, Critical, CheckMessage
+from django.core.checks import CheckMessage, Critical, Tags, register
 
 
 @register(Tags.compatibility)
