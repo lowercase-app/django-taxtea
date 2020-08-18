@@ -9,11 +9,11 @@ on:
     branches-ignore:
       - 'dependabot/**'
   schedule:
-    - cron: '0 21 * * 0'
+    - cron: '0 22 * * 4'
 
 jobs:
-  analyse:
-    name: Analyse
+  analyze:
+    name: Analyze
     runs-on: ubuntu-latest
 
     steps:
