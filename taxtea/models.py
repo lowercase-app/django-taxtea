@@ -17,8 +17,7 @@ StateType = TypeVar("StateType", bound="State")
 
 
 class State(models.Model):
-    """Django Model for State
-    """
+    """Django Model for State"""
 
     TAX_BASES = [("ORIGIN", "Origin-based"), ("DESTINATION", "Destination-based")]
 
@@ -63,9 +62,7 @@ class State(models.Model):
 
 
 class ZipCode(models.Model):
-    """Django Model for ZipCode
-
-    """
+    """Django Model for ZipCode"""
 
     state = models.ForeignKey(
         State,
@@ -100,7 +97,7 @@ class ZipCode(models.Model):
         The function will return `0.00` if the state does not collect sales tax for SaaS.
 
         Note:
-            If the given Zip Code is in a state where you hold a nexus and that state is an 
+            If the given Zip Code is in a state where you hold a nexus and that state is an
             ORIGIN-based sales tax state, the returned tax rate will be for the Zip Code of the nexus.
 
         Returns:
