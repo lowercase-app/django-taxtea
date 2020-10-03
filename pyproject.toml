@@ -60,7 +60,7 @@ django-localflavor = "^3.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
-flake8 = "^3.8.3"
+flake8 = "^3.8.4"
 model_bakery = "^1.1.1"
 isort = "^5.5.3"
 sphinx = "^3.2.1"
