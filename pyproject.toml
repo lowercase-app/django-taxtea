@@ -69,7 +69,7 @@ safety = "^1.9.0"
 sphinxcontrib_django = "^0.5.1"
 sphinx_autodoc_annotation = "^1.0-1"
 tox = "^3.20.0"
-pytest = "^6.0.2"
+pytest = "^6.1.2"
 pytest-django = "^3.10.0"
 pytest-cov = "^2.10.1"
 
