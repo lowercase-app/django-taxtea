@@ -55,7 +55,7 @@ src_paths = ["."]
 python = "^3.6.0"
 django = "^3.0.5"
 xmltodict = "^0.12.0"
-httpx = "^0.13.3"
+httpx = ">=0.13.3,<0.17.0"
 django-localflavor = "^3.0.1"
 
 [tool.poetry.dev-dependencies]
