@@ -7,7 +7,7 @@
 
 <div align="center">
   <sub>A little package that goes a long way. Built by
-  <a href="https://twitter.com/matt_strayer">Matt Strayer</a> and
+  <a href="https://www.mattstrayer.com">matt strayer</a> and
   <a href="https://github.com/lowercase-app/django-taxtea/graphs/contributors">
     contributors
   </a>
